@@ -81,23 +81,43 @@
         }
 
         .pricing-card.sold-out {
-    position: relative;
-    opacity: 0.6; /* grays out the card */
-    pointer-events: none; /* disables clicks */
-}
+            position: relative;
+            opacity: 0.7;
+            filter: grayscale(0.5);
+            pointer-events: none;
+        }
 
-.sold-out-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: red;
-    color: white;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-    z-index: 10;
-}
+        .pricing-card.sold-out::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.05);
+            z-index: 1;
+            border-radius: 20px;
+        }
 
+        .sold-out-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #ef4444;
+            color: white;
+            padding: 0.5rem 3rem;
+            font-weight: 800;
+            transform: rotate(45deg);
+            width: 180px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            z-index: 2;
+        }
+
+        .sold-out-badge::after {
+            content: 'SOLD OUT';
+        }
         
         [data-theme="dark"] {
             --primary: #818cf8;
@@ -187,7 +207,7 @@
         
         /* Navigation */
         .navbar {
-            background-color: rgba(var(--card-bg-rgb), 0.95);
+            background-color: var(--card-bg);
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow);
             padding: 1.2rem 0;
@@ -494,7 +514,7 @@
             flex-direction: column;
         }
         
-        .pricing-card:hover {
+        .pricing-card:hover:not(.sold-out) {
             transform: translateY(-15px);
             box-shadow: var(--shadow-lg);
             border-color: var(--primary);
@@ -505,7 +525,7 @@
             transform: scale(1.05);
         }
         
-        .pricing-card.popular:hover {
+        .pricing-card.popular:hover:not(.sold-out) {
             transform: scale(1.05) translateY(-15px);
         }
         
@@ -522,12 +542,18 @@
             text-align: center;
             font-size: 0.9rem;
             font-family: 'Inter', sans-serif;
+            z-index: 2;
+        }
+        
+        .popular-badge::after {
+            content: 'BEST VALUE';
         }
         
         .pricing-header {
             text-align: center;
             margin-bottom: 2.5rem;
             position: relative;
+            z-index: 2;
         }
         
         .pricing-name {
@@ -559,6 +585,8 @@
         .pricing-features {
             margin-bottom: 2.5rem;
             flex-grow: 1;
+            position: relative;
+            z-index: 2;
         }
         
         .pricing-feature {
@@ -573,6 +601,10 @@
             margin-right: 1rem;
             min-width: 24px;
             font-size: 1.1rem;
+        }
+        
+        .pricing-card.sold-out .pricing-feature i {
+            color: var(--text-muted);
         }
         
         .price-per-credit {
@@ -850,7 +882,7 @@
                 transform: none;
             }
             
-            .pricing-card.popular:hover {
+            .pricing-card.popular:hover:not(.sold-out) {
                 transform: translateY(-15px);
             }
         }
@@ -920,6 +952,12 @@
             .cta p {
                 font-size: 1.15rem;
             }
+            
+            .sold-out-badge, .popular-badge {
+                right: -35px;
+                width: 160px;
+                font-size: 0.8rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -941,6 +979,12 @@
             
             .payment-options {
                 flex-direction: column;
+            }
+            
+            .sold-out-badge, .popular-badge {
+                right: -40px;
+                width: 140px;
+                font-size: 0.7rem;
             }
         }
         
@@ -1017,6 +1061,21 @@
             background: var(--primary);
             color: white;
             transform: translateY(-3px);
+        }
+        
+        /* Sold Out Card Specific */
+        .pricing-card.sold-out .pricing-name,
+        .pricing-card.sold-out .pricing-price,
+        .pricing-card.sold-out .pricing-credits,
+        .pricing-card.sold-out .price-per-credit,
+        .pricing-card.sold-out .pricing-feature span {
+            color: var(--text-muted);
+        }
+        
+        .pricing-card.sold-out .btn-primary {
+            background: var(--border-color);
+            color: var(--text-muted);
+            cursor: not-allowed;
         }
     </style>
 </head>
@@ -1274,20 +1333,17 @@
                 </div>
             </div>
             
-            <div class="row g-4">
-                <!-- Starter Plan -->
-               <div class="col-lg-4">
-    <div class="pricing-card sold-out">
-        <div class="sold-out-badge">Sold Out</div>
-        <div class="pricing-header">
-            <div class="pricing-name">Starter</div>
-            <div class="pricing-price">$40</div>
-            <div class="pricing-credits">30,000 Credits</div>
-            <p class="text-muted">Perfect for beginners</p>
-            <div class="price-per-credit">~ $1.33 per 1,000 credits</div>
-        </div>
-    </div>
-</div>
+            <div class="row g-4 justify-content-center">
+                <!-- Starter Plan - Sold Out -->
+                <div class="col-lg-4">
+                    <div class="pricing-card sold-out">
+                        <div class="sold-out-badge"></div>
+                        <div class="pricing-header">
+                            <div class="pricing-name">Starter</div>
+                            <div class="pricing-price">$40</div>
+                            <div class="pricing-credits">30,000 Credits</div>
+                            <p class="text-muted">Perfect for beginners</p>
+                            <div class="price-per-credit">~ $1.33 per 1,000 credits</div>
                         </div>
                         <div class="pricing-features">
                             <div class="pricing-feature">
@@ -1315,8 +1371,8 @@
                                 <span>Crypto payments accepted</span>
                             </div>
                         </div>
-                        <button class="btn btn-primary w-100" onclick="buyPlan('Starter', 40, 30000)">
-                            <i class="fab fa-telegram me-2"></i>Buy on Telegram
+                        <button class="btn btn-primary w-100" disabled>
+                            <i class="fab fa-telegram me-2"></i>Sold Out
                         </button>
                     </div>
                 </div>
@@ -1324,7 +1380,7 @@
                 <!-- Popular Plan -->
                 <div class="col-lg-4">
                     <div class="pricing-card popular">
-                        <div class="popular-badge">BEST VALUE</div>
+                        <div class="popular-badge"></div>
                         <div class="pricing-header">
                             <div class="pricing-name">Professional</div>
                             <div class="pricing-price">$70</div>
@@ -1637,28 +1693,16 @@
         // Add hover effect to all buttons
         document.querySelectorAll('.btn').forEach(button => {
             button.addEventListener('mouseenter', function() {
-                this.style.transition = 'all 0.3s ease';
+                if (!this.disabled) {
+                    this.style.transition = 'all 0.3s ease';
+                }
             });
+        });
+        
+        // Disable sold-out card interactions
+        document.querySelectorAll('.pricing-card.sold-out .btn').forEach(button => {
+            button.disabled = true;
         });
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
