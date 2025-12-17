@@ -79,6 +79,25 @@
             --text-muted: #64748b;
             --border-color: #e2e8f0;
         }
+
+        .pricing-card.sold-out {
+    position: relative;
+    opacity: 0.6; /* grays out the card */
+    pointer-events: none; /* disables clicks */
+}
+
+.sold-out-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
         
         [data-theme="dark"] {
             --primary: #818cf8;
@@ -1257,14 +1276,18 @@
             
             <div class="row g-4">
                 <!-- Starter Plan -->
-                <div class="col-lg-4">
-                    <div class="pricing-card">
-                        <div class="pricing-header">
-                            <div class="pricing-name">Starter</div>
-                            <div class="pricing-price">$40</div>
-                            <div class="pricing-credits">30,000 Credits</div>
-                            <p class="text-muted">Perfect for beginners</p>
-                            <div class="price-per-credit">~ $1.33 per 1,000 credits</div>
+               <div class="col-lg-4">
+    <div class="pricing-card sold-out">
+        <div class="sold-out-badge">Sold Out</div>
+        <div class="pricing-header">
+            <div class="pricing-name">Starter</div>
+            <div class="pricing-price">$40</div>
+            <div class="pricing-credits">30,000 Credits</div>
+            <p class="text-muted">Perfect for beginners</p>
+            <div class="price-per-credit">~ $1.33 per 1,000 credits</div>
+        </div>
+    </div>
+</div>
                         </div>
                         <div class="pricing-features">
                             <div class="pricing-feature">
@@ -1621,6 +1644,7 @@
 </body>
 
 </html>
+
 
 
 
