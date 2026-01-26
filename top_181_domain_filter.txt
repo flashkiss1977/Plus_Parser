@@ -1,5 +1,8 @@
 opera.com
 youtube.com
+translate.google.it
+deepl.com
+chatgpt.com
 facebook.com
 wikipedia.org
 reddit.com
