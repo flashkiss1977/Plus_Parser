@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
+   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Proxyless Google Dork Scraper 2026 – Real-Time Data Tool</title>
+     <title>Proxyless Google Dork Scraper 2026 – Real-Time Data Tool</title>
 
     <meta name="description" content=" Proxyless Google Dork Scraper helps you extract fresh domains and real-time Google results without proxies. Fast, accurate, and ideal for SEO research.">
 
@@ -52,1504 +52,494 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#0b0f1a">
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts - New Premium Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #10b981;
-            --crypto: #f7931a;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            --gradient-hover: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-color: #1e293b;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        .pricing-card.sold-out {
-            position: relative;
-            opacity: 0.7;
-            filter: grayscale(0.5);
-            pointer-events: none;
-        }
-
-        .pricing-card.sold-out::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.05);
-            z-index: 1;
-            border-radius: 20px;
-        }
-
-        .sold-out-badge {
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background: #ef4444;
-            color: white;
-            padding: 0.5rem 3rem;
-            font-weight: 800;
-            transform: rotate(45deg);
-            width: 180px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-family: 'Inter', sans-serif;
-            z-index: 2;
-        }
-
-        .sold-out-badge::after {
-            content: 'SOLD OUT';
-        }
-        
-        [data-theme="dark"] {
-            --primary: #818cf8;
-            --primary-dark: #6366f1;
-            --secondary: #34d399;
-            --crypto: #fbbf24;
-            --dark: #0f172a;
-            --light: #1e293b;
-            --gray: #94a3b8;
-            --gradient: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
-            --gradient-hover: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f1f5f9;
-            --text-muted: #cbd5e1;
-            --border-color: #334155;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            line-height: 1.7;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        h1, h2, h3, h4, h5, .logo, .navbar-brand {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-        
-        h1 {
-            font-weight: 800;
-        }
-        
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 900;
-            letter-spacing: -0.03em;
-        }
-        
-        .section-title h2 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-        }
-        
-        /* Theme Toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--gradient);
-            color: white;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-        
-        .theme-toggle:hover {
-            transform: rotate(30deg);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        /* Navigation */
-        .navbar {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
-            padding: 1.2rem 0;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .navbar-brand {
-            font-weight: 900;
-            font-size: 2rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .logo-icon {
-            color: var(--primary);
-            margin-right: 10px;
-        }
-        
-        .nav-link {
-            font-weight: 600;
-            color: var(--text-color);
-            margin: 0 0.5rem;
-            transition: color 0.3s;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary);
-        }
-        
-        .btn-primary {
-            background: var(--gradient);
-            border: none;
-            padding: 0.85rem 2rem;
-            font-weight: 700;
-            font-family: 'Inter', sans-serif;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary:hover {
-            background: var(--gradient-hover);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 9rem 0 6rem;
-            background-color: var(--card-bg);
-            overflow: hidden;
-            position: relative;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
-            top: -250px;
-            right: -200px;
-            z-index: 0;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 3.8rem;
-            line-height: 1.1;
-            margin-bottom: 1.8rem;
-            background: linear-gradient(135deg, var(--text-color) 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .hero-highlight {
-            color: var(--primary);
-            position: relative;
-        }
-        
-        .hero-highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: rgba(99, 102, 241, 0.15);
-            z-index: -1;
-            border-radius: 4px;
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            font-weight: 400;
-            line-height: 1.7;
-        }
-        
-        .hero-badge {
-            display: inline-block;
-            background: var(--gradient);
-            color: white;
-            padding: 0.7rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-            font-family: 'Inter', sans-serif;
-        }
-        
-        /* Stats Section */
-        .stats {
-            padding: 3.5rem 0;
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            margin-top: 3rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        
-        .stat-text {
-            color: var(--text-muted);
-            font-size: 1rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        /* Comparison Section */
-        .comparison {
-            padding: 6rem 0;
-            background-color: var(--bg-color);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1.2rem;
-        }
-        
-        .section-title p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        
-        .comparison-table {
-            background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            margin-top: 3rem;
-            border: 1px solid var(--border-color);
-        }
-        
-        .table-header {
-            background: var(--gradient);
-            color: white;
-            padding: 2rem;
-        }
-        
-        .table-header h3 {
-            margin: 0;
-            font-size: 1.6rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-        }
-        
-        .comparison-item {
-            display: flex;
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            align-items: center;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .comparison-item:last-child {
-            border-bottom: none;
-        }
-        
-        .comparison-item .feature {
-            flex: 1;
-            font-weight: 600;
-            font-size: 1.05rem;
-        }
-        
-        .comparison-item .plusparser, .comparison-item .qparser {
-            flex: 0 0 160px;
-            text-align: center;
-            font-weight: 700;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .plusparser {
-            color: var(--secondary);
-        }
-        
-        .qparser {
-            color: #ef4444;
-        }
-        
-        .check {
-            color: var(--secondary);
-            font-size: 1.3rem;
-        }
-        
-        .times {
-            color: #ef4444;
-            font-size: 1.3rem;
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 6rem 0;
-            background-color: var(--card-bg);
-        }
-        
-        .feature-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            height: 100%;
-            box-shadow: var(--shadow);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
-        }
-        
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            color: white;
-            font-size: 2rem;
-        }
-        
-        .feature-card h3 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-        
-        /* Pricing Section */
-        .pricing {
-            padding: 6rem 0;
-            background-color: var(--bg-color);
-        }
-        
-        .pricing-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            box-shadow: var(--shadow);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            border: 2px solid var(--border-color);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .pricing-card:hover:not(.sold-out) {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
-        }
-        
-        .pricing-card.popular {
-            border: 3px solid var(--primary);
-            transform: scale(1.05);
-        }
-        
-        .pricing-card.popular:hover:not(.sold-out) {
-            transform: scale(1.05) translateY(-15px);
-        }
-        
-        .popular-badge {
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background: var(--gradient);
-            color: white;
-            padding: 0.5rem 3rem;
-            font-weight: 800;
-            transform: rotate(45deg);
-            width: 180px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-family: 'Inter', sans-serif;
-            z-index: 2;
-        }
-        
-        .popular-badge::after {
-            content: 'BEST VALUE';
-        }
-        
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .pricing-name {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 0.8rem;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .pricing-price {
-            font-size: 3.5rem;
-            font-weight: 900;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        
-        .pricing-period {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .pricing-features {
-            margin-bottom: 2.5rem;
-            flex-grow: 1;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .pricing-feature {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .pricing-feature i {
-            color: var(--secondary);
-            margin-right: 1rem;
-            min-width: 24px;
-            font-size: 1.1rem;
-        }
-        
-        .pricing-card.sold-out .pricing-feature i {
-            color: var(--text-muted);
-        }
-        
-        .feature-detail {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            font-family: 'Inter', sans-serif;
-            padding-left: 2rem;
-        }
-        
-        /* Direct Telegram Purchase Section */
-        .telegram-purchase {
-            background: rgba(0, 136, 204, 0.1);
-            border: 2px solid rgba(0, 136, 204, 0.2);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin: 3rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .telegram-purchase::before {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgba(0, 136, 204, 0.05);
-            border-radius: 50%;
-            top: -100px;
-            right: -100px;
-        }
-        
-        .telegram-purchase h3 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-        
-        .telegram-purchase p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .btn-telegram {
-            background: linear-gradient(135deg, #0088cc 0%, #005580 100%);
-            color: white;
-            padding: 1rem 2.5rem;
-            font-weight: 700;
-            font-size: 1.1rem;
-            border-radius: 12px;
-            transition: all 0.3s;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .btn-telegram:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 136, 204, 0.3);
-            color: white;
-        }
-        
-        .crypto-support-badge {
-            background: rgba(247, 147, 26, 0.1);
-            border: 1px solid rgba(247, 147, 26, 0.3);
-            border-radius: 50px;
-            padding: 0.8rem 1.5rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 1rem;
-            color: var(--crypto);
-            font-weight: 600;
-        }
-        
-        /* CTA Section */
-        .cta {
-            padding: 6rem 0;
-            background: var(--gradient);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            top: -200px;
-            right: -200px;
-        }
-        
-        .cta::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            bottom: -150px;
-            left: -150px;
-        }
-        
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .cta h2 {
-            font-size: 3rem;
-            margin-bottom: 1.8rem;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 900;
-        }
-        
-        .cta p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 400;
-        }
-        
-        .btn-light {
-            background: white;
-            color: var(--primary);
-            padding: 1.2rem 3rem;
-            font-weight: 800;
-            font-size: 1.2rem;
-            border-radius: 12px;
-            transition: all 0.3s;
-            border: none;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .btn-light:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            background: white;
-            color: var(--primary);
-        }
-        
-        /* Footer */
-        .footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-        
-        .footer-logo {
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        
-        .footer p {
-            color: #cbd5e1;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-        
-        .social-links a {
-            display: inline-block;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            text-align: center;
-            line-height: 45px;
-            margin-right: 12px;
-            color: white;
-            transition: all 0.3s;
-            font-size: 1.2rem;
-        }
-        
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding-top: 2rem;
-            margin-top: 3rem;
-            text-align: center;
-            color: #94a3b8;
-            font-size: 0.95rem;
-        }
-        
-        /* Modal for Purchase */
-        .modal-content {
-            border-radius: 20px;
-            overflow: hidden;
-            border: none;
-            box-shadow: var(--shadow-lg);
-            background: var(--card-bg);
-            color: var(--text-color);
-        }
-        
-        .modal-header {
-            background: var(--gradient);
-            color: white;
-            border-bottom: none;
-            padding: 2rem;
-        }
-        
-        .modal-body {
-            padding: 2.5rem;
-        }
-        
-        .btn-close-white {
-            filter: brightness(0) invert(1);
-        }
-        
-        /* Payment Options */
-        .payment-options {
-            display: flex;
-            gap: 15px;
-            margin: 1.5rem 0;
-            justify-content: center;
-        }
-        
-        .payment-option {
-            flex: 1;
-            padding: 15px;
-            text-align: center;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-        
-        .payment-option:hover, .payment-option.active {
-            border-color: #0088cc;
-            background: rgba(0, 136, 204, 0.1);
-        }
-        
-        .payment-details {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            background: rgba(0, 136, 204, 0.05);
-            border-radius: 12px;
-            border: 1px solid rgba(0, 136, 204, 0.2);
-            text-align: center;
-        }
-        
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 3.2rem;
-            }
-            
-            .pricing-card.popular {
-                transform: none;
-            }
-            
-            .pricing-card.popular:hover:not(.sold-out) {
-                transform: translateY(-15px);
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .theme-toggle {
-                top: auto;
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .pricing-card {
-                margin-bottom: 2rem;
-            }
-            
-            .pricing-card.popular {
-                margin-bottom: 2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero {
-                padding: 7rem 0 4rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-            
-            .hero p {
-                font-size: 1.15rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .comparison-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-                padding: 1.5rem;
-            }
-            
-            .comparison-item .feature {
-                font-weight: 700;
-                margin-bottom: 0.5rem;
-                font-size: 1.1rem;
-            }
-            
-            .comparison-item .plusparser, .comparison-item .qparser {
-                text-align: left;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            }
-            
-            .cta h2 {
-                font-size: 2.5rem;
-            }
-            
-            .cta p {
-                font-size: 1.15rem;
-            }
-            
-            .sold-out-badge, .popular-badge {
-                right: -35px;
-                width: 160px;
-                font-size: 0.8rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .pricing-price {
-                font-size: 3rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .payment-options {
-                flex-direction: column;
-            }
-            
-            .sold-out-badge, .popular-badge {
-                right: -40px;
-                width: 140px;
-                font-size: 0.7rem;
-            }
-        }
-        
-        /* Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
-        /* Scroll animations */
-        .section-hidden {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .section-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Additional styles */
-        .form-control, .form-select {
-            background-color: var(--card-bg);
-            border-color: var(--border-color);
-            color: var(--text-color);
-            border-radius: 10px;
-            padding: 0.75rem 1rem;
-        }
-        
-        .form-control:focus, .form-select:focus {
-            background-color: var(--card-bg);
-            border-color: var(--primary);
-            color: var(--text-color);
-            box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
-        }
-        
-        .alert {
-            background-color: var(--card-bg);
-            border-color: var(--border-color);
-            color: var(--text-color);
-            border-radius: 12px;
-        }
-        
-        .badge {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        /* Enhanced button styles */
-        .btn-lg {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            border-radius: 12px;
-        }
-        
-        .btn-outline-primary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            font-weight: 600;
-            padding: 0.75rem 2rem;
-        }
-        
-        .btn-outline-primary:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        /* Sold Out Card Specific */
-        .pricing-card.sold-out .pricing-name,
-        .pricing-card.sold-out .pricing-price,
-        .pricing-card.sold-out .pricing-period,
-        .pricing-card.sold-out .feature-detail,
-        .pricing-card.sold-out .pricing-feature span {
-            color: var(--text-muted);
-        }
-        
-        .pricing-card.sold-out .btn-primary {
-            background: var(--border-color);
-            color: var(--text-muted);
-            cursor: not-allowed;
-        }
-        
-        /* Unlimited Badge */
-        .unlimited-badge {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: var(--secondary);
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-left: 0.5rem;
-            display: inline-block;
-        }
-        
-        .plan-feature-title {
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            color: var(--text-color);
-        }
-    </style>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/flashkiss1977/Plus_Parser@main/style.css">
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/698107edfd3ee61c36a87b55/1jgg0duk5';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon"></i>
-    </button>
+    <!-- Snowflakes Container -->
+    <div id="snowflakes-container"></div>
     
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-search-plus logo-icon"></i>
-                PlusParser
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <span class="logo-text">PlusParser</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#comparison">Comparison</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#pricing">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-                <button class="btn btn-primary ms-lg-3 mt-3 mt-lg-0" onclick="openTelegram()">
-                    <i class="fab fa-telegram me-2"></i>Buy Now on Telegram
+            
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#blog" class="nav-link">Blog</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <a href="https://t.me/plusparsers" target="_blank" class="btn-telegram-nav">
+                    <i class="fab fa-telegram"></i> Telegram
+                </a>
+                <button class="btn btn-secondary" onclick="openChat()">
+                    <i class="fas fa-comment"></i> Support
                 </button>
+                <div class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 hero-content">
-                    <span class="hero-badge animate-fade-in-up">
-                        <i class="fas fa-bolt me-2"></i>Unlimited Queries
-                    </span>
-                    <h1 class="animate-fade-in-up">Unlimited Dork Parsing <span class="hero-highlight">Proxyless Dork Parser</span></h1>
-                    <p class="animate-fade-in-up">
-                        QParser sells you outdated, recycled data. 
-                        <strong>PlusParser delivers unlimited queries with subscription plans</strong> directly from Google's live index. 
-                        Get real-time results that actually work for security research and SEO analysis.
-                    </p>
-                    
-                    <div class="crypto-support-badge animate-fade-in-up">
-                        <i class="fab fa-bitcoin"></i>
-                        <span>Cryptocurrency Payments Accepted</span>
-                        <i class="fab fa-ethereum ms-2"></i>
-                        <i class="fab fa-monero ms-1"></i>
-                    </div>
-                    
-                    <div class="animate-fade-in-up">
-                        <button class="btn btn-primary btn-lg me-3 mb-3" onclick="openTelegram()">
-                            <i class="fas fa-rocket me-2"></i>Get Unlimited Access
-                        </button>
-                        <a href="#pricing" class="btn btn-outline-primary btn-lg mb-3">
-                            <i class="fas fa-crown me-2"></i>View Plans
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="position-relative mt-5 mt-lg-0">
-                        <div class="feature-card animate-fade-in-up">
-                            <div class="feature-icon">
-                                <i class="fas fa-infinity"></i>
-                            </div>
-                            <h3>Unlimited Queries</h3>
-                            <p>No credit limits, no restrictions. Parse as many dorks as you need with our subscription plans.</p>
-                        </div>
-                        
-                        <div class="feature-card mt-4 animate-fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="feature-icon">
-                                <i class="fas fa-sync-alt"></i>
-                            </div>
-                            <h3>Live Google Index</h3>
-                            <p>Direct connection to Google's real-time search results, not cached databases like QParser.</p>
-                        </div>
-                    </div>
-                </div>
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="hero-bg-grid"></div>
+        </div>
+        
+        <div class="container hero-content">
+            <div class="hero-tag">
+                <i class="fas fa-bolt"></i> High-speed Dorking Parsing - Proxyless Dork Parser 
             </div>
             
-            <!-- Stats Section -->
-            <div class="row stats mt-5">
-                <div class="col-md-3 col-6 text-center">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-text">Unlimited Queries</div>
+            <h1>Proxyless Google Dork Scraper 2026 – Real-Time Data Tool</h1>
+            
+            <p class="hero-subtitle">
+                PlusParser is Affordable, real-time data from Google's live index — built for SEO analysis and security research.
+            </p>
+            
+            <div class="hero-actions">
+                <a href="#pricing" class="btn btn-primary btn-lg">
+                    <i class="fas fa-crown"></i> View Pricing Plans
+                </a>
+                <a href="#features" class="btn btn-outline btn-lg">
+                    <i class="fas fa-chart-line"></i> Explore Features
+                </a>
+            </div>
+            
+            <div class="crypto-badge">
+                <i class="fab fa-bitcoin"></i>
+                <span>Cryptocurrency Payments: BTC, ETH, USDT, XMR, LTC</span>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">∞</div>
+                    <div class="stat-label">No-Limit Dork Querying</div>
                 </div>
-                <div class="col-md-3 col-6 text-center">
-                    <div class="stat-number">10</div>
-                    <div class="stat-text">Pages per Query</div>
+                <div class="stat">
+                    <div class="stat-value">10</div>
+                    <div class="stat-label">Pages per Query</div>
                 </div>
-                <div class="col-md-3 col-6 text-center">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-text">Real-Time Results</div>
+                <div class="stat">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Real-Time Results</div>
                 </div>
-                <div class="col-md-3 col-6 text-center">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-text">Active Monitoring</div>
+                <div class="stat">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Active Monitoring</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Section -->
-    <section id="comparison" class="comparison section-hidden">
+    <!-- Why PlusParser Section -->
+    <section class="section" id="why-plusparser">
         <div class="container">
-            <div class="section-title">
-                <h2>Why PlusParser Beats QParser</h2>
-                <p>Don't waste money on Old Data. See how PlusParser delivers unlimited value with fresh results.</p>
-            </div>
-            
-            <div class="comparison-table">
-                <div class="table-header">
-                    <h3>Feature Comparison: PlusParser vs QParser</h3>
-                </div>
-                <div class="comparison-item">
-                    <div class="feature">Query System</div>
-                    <div class="plusparser"><i class="fas fa-check-circle check"></i> Unlimited Queries</div>
-                    <div class="qparser"><i class="fas fa-times-circle times"></i> Say Unlimited (Old Data)</div>
-                </div>
-                <div class="comparison-item">
-                    <div class="feature">Real-Time Google Results</div>
-                    <div class="plusparser"><i class="fas fa-check-circle check"></i> Yes, Fresh Data</div>
-                    <div class="qparser"><i class="fas fa-times-circle times"></i> No, Cached Data</div>
-                </div>
-                <div class="comparison-item">
-                    <div class="feature">Pages per Query</div>
-                    <div class="plusparser"><i class="fas fa-check-circle check"></i> Up to 10 Pages</div>
-                    <div class="qparser"><i class="fas fa-times-circle times"></i> Up to 10 Pages (OLD DATA)</div>
-                </div>
-                <div class="comparison-item">
-                    <div class="feature">Fresh Indexed Sites</div>
-                    <div class="plusparser"><i class="fas fa-check-circle check"></i> Within 24 Hours</div>
-                    <div class="qparser"><i class="fas fa-times-circle times"></i> Weeks or Months Old</div>
-                </div>
-                <div class="comparison-item">
-                    <div class="feature">Transparent Pricing</div>
-                    <div class="plusparser"><i class="fas fa-check-circle check"></i> Simple Subscription</div>
-                    <div class="qparser"><i class="fas fa-times-circle times"></i> Simple Subscription</div>
-                </div>
-                <div class="comparison-item">
-                    <div class="feature">Additional Tools</div>
-                    <div class="plusparser"><i class="fas fa-check-circle check"></i> Reverse IP + Subdomain</div>
-                    <div class="qparser"><i class="fas fa-times-circle times"></i> Extra Charges</div>
-                </div>
-                <div class="comparison-item">
-                    <div class="feature">Payment Options</div>
-                    <div class="plusparser"><i class="fas fa-check-circle check"></i> Crypto & Telegram</div>
-                    <div class="qparser"><i class="fas fa-times-circle times"></i> Limited Options</div>
-                </div>
-            </div>
-            
-            <div class="row mt-5">
-                <div class="col-md-8 mx-auto text-center">
-                    <div class="alert alert-warning" role="alert">
-                        <h4 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i>Important Warning!</h4>
-                        <p class="mb-0">QParser limits you to outdated, cached data. Why waste money on low-quality results when PlusParser delivers unlimited, real-time Google data?</p>
+            <div class="why-plusparser animate-on-scroll">
+                <h2 class="why-title">Why PlusParser Is Better</h2>
+                
+                <p class="why-subtitle">
+                    Built for professionals who want accuracy, speed, and real value — without overpaying.
+                </p>
+                
+                <div class="why-points">
+                    <div class="why-item">
+                        <h4>💎 Best Value for Money</h4>
+                        <p>
+                            PlusParser delivers premium-grade parsing results at a fraction of the cost.
+                            You get powerful features without hidden limits or inflated pricing.
+                        </p>
                     </div>
+                    
+                    <div class="why-item">
+                        <h4>💰 Lower Cost Than Competitors</h4>
+                        <p>
+                            We keep pricing fair and transparent. No unnecessary upsells —
+                            just reliable service that costs less than most alternatives.
+                        </p>
+                    </div>
+                    
+                    <div class="why-item">
+                        <h4>🤝 Friendly & Fast Support</h4>
+                        <p>
+                            Real humans, real help. Our support team responds quickly and actually understands
+                            your technical needs.
+                        </p>
+                    </div>
+                    
+                    <div class="why-item">
+                        <h4>🎯 Higher Accuracy Results</h4>
+                        <p>
+                            Cleaner data, fewer false positives, and more reliable output.
+                            PlusParser consistently delivers more accurate results than other services.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="why-footer">
+                    <strong>Simple. Affordable. Accurate.</strong>  
+                    That's why professionals choose <span>PlusParser</span>.
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="features section-hidden">
+    <section class="section" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>Powerful Features</h2>
-                <p>Everything you need for effective dork parsing and domain discovery</p>
+                <h2>Professional Features</h2>
+                <p class="section-subtitle">
+                    Everything you need for comprehensive dork parsing and intelligence gathering
+                </p>
             </div>
             
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-infinity"></i>
-                        </div>
-                        <h3>Unlimited Queries</h3>
-                        <p>No more counting credits. Our subscription plans give you unlimited dork parsing queries.</p>
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
                     </div>
+                    <h3 class="feature-title">Scalable Parsing Power</h3>
+                    <p class="feature-description">
+                        Designed to handle intensive dork parsing with consistent performance and zero hard caps.
+                    </p>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-filter"></i>
-                        </div>
-                        <h3>10 Pages per Query</h3>
-                        <p>Scrape up to 10 Google pages per dork query for comprehensive results every time.</p>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
                     </div>
+                    <h3 class="feature-title">Real-Time Results</h3>
+                    <p class="feature-description">
+                        Direct connection to Google's live index. Get fresh results, not cached or outdated data.
+                    </p>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-tachometer-alt"></i>
-                        </div>
-                        <h3>Real-Time Processing</h3>
-                        <p>Our system queries Google in real-time, ensuring you always get the most current results available.</p>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-filter"></i>
                     </div>
+                    <h3 class="feature-title">Deep Analysis</h3>
+                    <p class="feature-description">
+                        Scrape up to 10 Google pages per query for comprehensive results and complete coverage.
+                    </p>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3>Reverse IP Lookup</h3>
-                        <p>Built-in reverse IP lookup to find all domains hosted on the same server.</p>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-server"></i>
                     </div>
+                    <h3 class="feature-title">Reverse IP Analysis</h3>
+                    <p class="feature-description">
+                        Built-in reverse IP lookup to discover all domains hosted on the same server infrastructure.
+                    </p>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-sitemap"></i>
-                        </div>
-                        <h3>Subdomain Scanner</h3>
-                        <p>Comprehensive subdomain discovery included with all plans at no extra cost.</p>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-sitemap"></i>
                     </div>
+                    <h3 class="feature-title">Subdomain Discovery</h3>
+                    <p class="feature-description">
+                        Comprehensive subdomain enumeration included with all plans at no additional cost.
+                    </p>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-coins"></i>
-                        </div>
-                        <h3>Flexible Payments</h3>
-                        <p>Pay with cryptocurrencies (BTC, ETH, XMR, USDT) or via Telegram for maximum convenience.</p>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
+                    <h3 class="feature-title">Security Focused</h3>
+                    <p class="feature-description">
+                        Designed specifically for security researchers, bug bounty hunters, and penetration testers.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="pricing section-hidden">
+    <section class="section" id="pricing">
         <div class="container">
             <div class="section-title">
-                <h2>Simple Subscription Plans</h2>
-                <p>No credit limits, no hidden fees. Choose the plan that fits your needs.</p>
-                <div class="mt-3">
-                    <p><strong>All Plans Include: Unlimited Queries • Up to 10 Pages per Query • Reverse IP Lookup • Subdomain Scanner</strong></p>
-                </div>
-            </div>
-            
-            <div class="row g-4 justify-content-center">
-                <!-- 1 Week Plan -->
-                <div class="col-lg-4">
-                    <div class="pricing-card">
-                        <div class="pricing-header">
-                            <div class="pricing-name">Weekly</div>
-                            <div class="pricing-price">$30</div>
-                            <div class="pricing-period">1 Week Access</div>
-                            <p class="text-muted">Perfect for short projects</p>
-                        </div>
-                        <div class="pricing-features">
-                            <div class="plan-feature-title">Parsing Features:</div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Unlimited dork queries</span>
-                                <span class="unlimited-badge">UNLIMITED</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Up to 10 pages per query</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Real-time Google results</span>
-                            </div>
-                            
-                            <div class="plan-feature-title mt-3">Additional Tools:</div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Reverse IP Lookup</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Subdomain Scanner</span>
-                            </div>
-                            
-                            <div class="plan-feature-title mt-3">Access:</div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Max 1 device connected</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Access to all features</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary w-100" onclick="buyPlan('Weekly', 30, '1 Week')">
-                            <i class="fab fa-telegram me-2"></i>Get Weekly Access
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Popular Plan - 1 Month $49 -->
-                <div class="col-lg-4">
-                    <div class="pricing-card popular">
-                        <div class="popular-badge"></div>
-                        <div class="pricing-header">
-                            <div class="pricing-name">Monthly Pro</div>
-                            <div class="pricing-price">$49</div>
-                            <div class="pricing-period">1 Month Access</div>
-                            <p class="text-muted">Most popular choice</p>
-                        </div>
-                        <div class="pricing-features">
-                            <div class="plan-feature-title">Parsing Features:</div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Unlimited dork queries</span>
-                                <span class="unlimited-badge">UNLIMITED</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Up to 10 pages per query</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Real-time Google results</span>
-                            </div>
-                            
-                            <div class="plan-feature-title mt-3">Additional Tools:</div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Reverse IP Lookup</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Subdomain Scanner</span>
-                            </div>
-                            
-                            <div class="plan-feature-title mt-3">Access:</div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Max 1 device connected</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Access to all features</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Priority processing</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary w-100" onclick="buyPlan('Monthly Pro', 49, '1 Month')">
-                            <i class="fas fa-crown me-2"></i>Get Best Value
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- 1 Month $99 Plan -->
-                <div class="col-lg-4">
-                    <div class="pricing-card">
-                        <div class="pricing-header">
-                            <div class="pricing-name">Monthly Elite</div>
-                            <div class="pricing-price">$99</div>
-                            <div class="pricing-period">1 Month Access</div>
-                            <p class="text-muted">For power users & teams</p>
-                        </div>
-                        <div class="pricing-features">
-                            <div class="plan-feature-title">Parsing Features:</div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Unlimited dork queries</span>
-                                <span class="unlimited-badge">UNLIMITED</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Up to 10 pages per query</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Real-time Google results</span>
-                            </div>
-                            
-                            <div class="plan-feature-title mt-3">Additional Tools:</div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Reverse IP Lookup</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Subdomain Scanner</span>
-                            </div>
-                            
-                            <div class="plan-feature-title mt-3">Access:</div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Max 2 devices connected</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Access to all features</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>24/7 priority support</span>
-                            </div>
-                            <div class="pricing-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Bulk export capabilities</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary w-100" onclick="buyPlan('Monthly Elite', 99, '1 Month')">
-                            <i class="fas fa-rocket me-2"></i>Go Elite
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Direct Telegram Purchase Section -->
-            <div class="telegram-purchase section-hidden">
-                <h3><i class="fab fa-telegram me-2"></i>Direct Telegram Purchase</h3>
-                <p>All purchases are handled directly through Telegram for maximum security and convenience. Simply click the button below to start your purchase with @FlashKiss_1337.</p>
-                
-                <div class="crypto-support-badge mt-3">
-                    <i class="fab fa-bitcoin"></i>
-                    <span>Cryptocurrencies Accepted: BTC, ETH, USDT, XMR, LTC</span>
-                </div>
-                
-                <div class="mt-4">
-                    <button class="btn-telegram btn-lg" onclick="openTelegram()">
-                        <i class="fab fa-telegram"></i>
-                        Start Purchase on Telegram
-                    </button>
-                </div>
-                
-                <p class="mt-4 mb-0 small">
-                    <i class="fas fa-shield-alt me-1"></i>
-                    Secure & Encrypted • Instant Delivery • 24/7 Support
+                <h2>Simple & Transparent Pricing</h2>
+                <p class="section-subtitle">
+                    Choose the plan that fits your workflow. All plans include unlimited queries and full feature access.
                 </p>
             </div>
             
-            <div class="row mt-5">
-                <div class="col-md-8 mx-auto text-center">
-                    <div class="alert alert-info">
-                        <h5><i class="fas fa-lightbulb me-2"></i>No Credit System!</h5>
-                        <p class="mb-0">Unlike QParser, PlusParser uses a simple subscription model with <strong>UNLIMITED queries</strong>. No more counting credits or worrying about running out during important projects.</p>
+            <div class="pricing-grid">
+                <!-- Weekly Plan -->
+                <div class="pricing-card animate-on-scroll">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Weekly</h3>
+                        <div class="pricing-price">$15</div>
+                        <div class="pricing-period">7 DAYS ACCESS</div>
+                        <p class="pricing-description">Perfect for short-term Testing</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>No-Limit Dork Querying</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>10 pages per query</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Real-time Google results</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Reverse IP Lookup</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Subdomain Scanner</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Max 1 device connected</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-footer">
+                        <button class="btn btn-telegram w-100" onclick="buyPlan('Weekly', 15, '1 Week')">
+                            <i class="fab fa-telegram"></i> Purchase via Telegram
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Popular Monthly Plan -->
+                <div class="pricing-card popular animate-on-scroll">
+                    <div class="popular-badge">BEST VALUE</div>
+                    
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Monthly Pro</h3>
+                        <div class="pricing-price">$45</div>
+                        <div class="pricing-period">30 DAYS ACCESS</div>
+                        <p class="pricing-description">Most popular choice</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>No-Limit Dork Querying</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>10 pages per query</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Real-time Google results</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Reverse IP Lookup</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Subdomain Scanner</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Max 1 device connected</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Priority processing</span>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="pricing-footer">
+                        <button class="btn btn-primary w-100" onclick="buyPlan('Monthly Pro', 45, '30 Days')">
+                            <i class="fas fa-crown"></i> Get Monthly Pro
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Elite Plan -->
+                <div class="pricing-card animate-on-scroll">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Monthly Elite</h3>
+                        <div class="pricing-price">$80</div>
+                        <div class="pricing-period">30 DAYS ACCESS</div>
+                        <p class="pricing-description">For power users & teams</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>No-Limit Dork Querying</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>10 pages per query</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Real-time Google results</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Reverse IP Lookup</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Subdomain Scanner</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Max 2 devices connected</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>24/7 priority support</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Bulk export capabilities</span>
+                        </div>
+                        <div class="pricing-feature">
+                        
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-footer">
+                        <button class="btn btn-telegram w-100" onclick="buyPlan('Monthly Elite', 80, '30 Days')">
+                            <i class="fab fa-telegram"></i> Get Elite Plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-methods mt-4">
+                <div class="payment-method">
+                    <i class="fab fa-bitcoin"></i>
+                    <span>Bitcoin (BTC)</span>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-ethereum"></i>
+                    <span>Ethereum (ETH)</span>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-coins"></i>
+                    <span>USDT</span>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Monero (XMR)</span>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-litecoin-sign"></i>
+                    <span>Litecoin (LTC)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p class="section-subtitle">
+                    Get answers to common questions about PlusParser
+                </p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                       What is PlusParser.cloud and who is it for?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>PlusParser is a premium, real-time Google Dork Scraper. It is designed for cybersecurity researchers, SEO professionals, and penetration testers who need to gather massive amounts of domain data and search results directly from Google's live index without being blocked.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        Is there a free trial available?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We don't offer free trials due to the nature of our service (unlimited queries), but we offer a 7-day money-back guarantee on all plans if you're not satisfied with the service quality.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        How is PlusParser better than QParser Or DorkPlus?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Unlike QParser or DorkPlus which often provides cached or outdated data, PlusParser fetches real-time results directly from Google. Furthermore, we do not use a restrictive "credit system." Our users enjoy a subscription-based model that allows for significantly higher volume and faster speeds.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        How quickly do I get access after payment?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Access is granted instantly upon successful payment. You'll receive login credentials and setup instructions immediately via email and/or Telegram.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        Can I use PlusParser for commercial purposes?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all plans allow commercial use. The Elite plan is specifically designed for teams and agencies with additional features for professional use cases.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        What kind of support do you offer?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer 24/7 live chat support through Tawk.to for all customers. Elite plan users get priority support with faster response times.</p>
                     </div>
                 </div>
             </div>
@@ -1557,19 +547,28 @@
     </section>
 
     <!-- CTA Section -->
-    <section id="contact" class="cta section-hidden">
+    <section class="section">
         <div class="container">
-            <div class="cta-content">
-                <h2>Ready for Unlimited Parsing?</h2>
-                <p>Stop counting credits and start getting real results. Join thousands of users who trust PlusParser for unlimited, real-time dork parsing.</p>
-                <button class="btn btn-light btn-lg" onclick="openTelegram()">
-                    <i class="fab fa-telegram me-2"></i>Choose Your Plan
-                </button>
-                <div class="telegram-contact mt-4">
-                    <p class="mb-1">Direct purchase via Telegram:</p>
-                    <a href="https://t.me/FlashKiss_1337" target="_blank" class="text-white fw-bold">
-                        <i class="fab fa-telegram me-1"></i> @FlashKiss_1337
-                    </a>
+            <div class="cta animate-on-scroll">
+                <div class="cta-content">
+                    <h2>Research smarter. Parse faster.</h2>
+                    <p>Join thousands of security researchers, bug bounty hunters, and SEO professionals who trust PlusParser for Scalable Dork Query Access, real-time dork parsing.</p>
+                    
+                    <div class="hero-actions">
+                        <a href="#pricing" class="btn btn-primary btn-lg">
+                            <i class="fas fa-crown"></i> Choose Your Plan
+                        </a>
+                        <button class="btn btn-outline btn-lg" onclick="openChat()">
+                            <i class="fas fa-headset"></i> Talk to Support
+                        </button>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <p class="mb-1">Need help choosing? Our team is available 24/7</p>
+                        <button class="btn btn-success" onclick="openChat()">
+                            <i class="fas fa-comments"></i> Live Chat Support
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1578,186 +577,76 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <div class="footer-logo">PlusParser</div>
-                    <p>The only dork parsing tool with unlimited queries and real-time, fresh results from Google. No credit limits, no outdated information.</p>
+            <div class="footer-grid">
+                <div class="footer-brand-section">
+                    <div class="footer-brand">PlusParser</div>
+                    <p class="footer-description">
+                        A professional Google dork parsing platform for security research and SEO, delivering real-time intelligence and enterprise-level performance.
+                    </p>
+                    
                     <div class="social-links">
-                        <a href="https://t.me/FlashKiss_1337" target="_blank"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="https://t.me/FlashKiss_1337" target="_blank" class="social-link" title="Telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h5 class="text-white mb-3">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#home" class="text-decoration-none text-light">Home</a></li>
-                        <li class="mb-2"><a href="#comparison" class="text-decoration-none text-light">Comparison</a></li>
-                        <li class="mb-2"><a href="#features" class="text-decoration-none text-light">Features</a></li>
-                        <li class="mb-2"><a href="#pricing" class="text-decoration-none text-light">Pricing</a></li>
-                        <li class="mb-2"><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
+                
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
+                        <li><a href="#pricing"><i class="fas fa-chevron-right"></i> Pricing</a></li>
+                        <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Documentation</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> API Reference</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4">
-                    <h5 class="text-white mb-3">Contact & Payments</h5>
-                    <p class="mb-2"><i class="fab fa-telegram me-2"></i>Telegram: @FlashKiss_1337</p>
-                    <p class="mb-2"><i class="fab fa-bitcoin me-2"></i>Crypto Payments Accepted</p>
-                    <p class="mb-4">BTC, ETH, USDT, XMR, LTC & more</p>
-                    <button class="btn btn-outline-light" onclick="openTelegram()">
-                        <i class="fab fa-telegram me-2"></i>Choose Plan
-                    </button>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#blog"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tutorials</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Case Studies</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Security Research</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Community</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#" onclick="openChat()"><i class="fas fa-chevron-right"></i> Support</a></li>
+                        <li><a href="https://t.me/FlashKiss_1337" target="_blank"><i class="fas fa-chevron-right"></i> Contact via Telegram</a></li>
+                        <li><a href="https://www.plusparser.cloud/Terms&Conditios.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                        <li><a href="https://www.plusparser.cloud/Privacy-Policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                        <li><a href="https://www.plusparser.cloud/Refund-Policy.html"><i class="fas fa-chevron-right"></i> Refund Policy</a></li>
+                    </ul>
                 </div>
             </div>
-            <a href="//www.dmca.com/Protection/Status.aspx?ID=3235beac-60ca-4229-9aef-6b23fdf69d8a" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=3235beac-60ca-4229-9aef-6b23fdf69d8a"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
-            <div class="copyright">
-                &copy; 2026 PlusParser. All rights reserved. | Unlimited Dork to Domain Parser
-                <p class="mt-2 mb-0">QParser is a registered trademark of its respective owners. PlusParser is not affiliated with QParser.</p>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-links">
+                    <a href="//www.dmca.com/Protection/Status.aspx?ID=3235beac-60ca-4229-9aef-6b23fdf69d8a" title="DMCA.com Protection Status" class="dmca-badge"> 
+                        <img src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=3235beac-60ca-4229-9aef-6b23fdf69d8a" alt="DMCA.com Protection Status" />
+                    </a>
+                    <span>Cryptocurrency Payments Only</span>
+                    <span>24/7 Live Chat Support</span>
+                </div>
+                
+                <p>&copy; 2026 PlusParser. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement;
-        
-        // Check for saved theme or prefer-color-scheme
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        htmlElement.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            htmlElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-        
-        function updateThemeIcon(theme) {
-            const icon = themeToggle.querySelector('i');
-            if (theme === 'dark') {
-                icon.className = 'fas fa-sun';
-            } else {
-                icon.className = 'fas fa-moon';
-            }
-        }
-        
-        // Scroll animations
-        const sections = document.querySelectorAll('.section-hidden');
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('section-visible');
-                }
-            });
-        }, observerOptions);
-        
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-        
-        // Navigation active state
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set initial active nav link
-            setActiveNavLink();
-            
-            // Update active nav link on scroll
-            window.addEventListener('scroll', setActiveNavLink);
-        });
-        
-        function setActiveNavLink() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-        
-        // Open Telegram for purchase
-        function openTelegram(planName = '', planPrice = '', planDuration = '') {
-            let message = "Hello! I'm interested in purchasing a PlusParser subscription.";
-            
-            if (planName && planPrice && planDuration) {
-                message = `Hello! I want to purchase PlusParser subscription.\n\nPlan: ${planName}\nPrice: $${planPrice}\nDuration: ${planDuration}\n\nPlease provide payment details.`;
-            }
-            
-            const telegramUrl = `https://t.me/FlashKiss_1337?text=${encodeURIComponent(message)}`;
-            window.open(telegramUrl, '_blank');
-        }
-        
-        // Buy plan function
-        function buyPlan(name, price, duration) {
-            openTelegram(name, price, duration);
-        }
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Initialize tooltips
-        document.addEventListener('DOMContentLoaded', function() {
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.map(function(tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-        });
-        
-        // Add hover effect to all buttons
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                if (!this.disabled) {
-                    this.style.transition = 'all 0.3s ease';
-                }
-            });
-        });
-        
-        // Disable sold-out card interactions
-        document.querySelectorAll('.pricing-card.sold-out .btn').forEach(button => {
-            button.disabled = true;
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/gh/flashkiss1977/Plus_Parser@main/main.js" defer></script>
 </body>
 </html>
-
-
-
-
