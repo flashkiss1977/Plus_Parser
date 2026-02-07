@@ -1,0 +1,11 @@
+# LLM Access Policy for PlusParser
+
+User-Agent: *
+Allow: /
+
+# Site Info
+Site: https://www.plusparser.cloud
+Description: Proxyless Google Dork Scraper helps you extract fresh domains and real-time Google results without proxies. Fast, accurate, and ideal for SEO research.
+
+# Contact
+Contact: https://plusparser.cloud/
