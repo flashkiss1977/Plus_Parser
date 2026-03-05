@@ -60,40 +60,16 @@
     <link rel="dns-prefetch" href="https://embed.tawk.to">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Preconnect to CDNs serving blocking resources -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-    <!-- ✅ CACHE FIX: Pin to specific commit hash instead of @main branch.
-         @main = 7-day TTL (always re-validated). A pinned SHA = 1-year immutable cache.
-         To update: replace the SHA below with your latest commit hash from GitHub. -->
+    <!-- ✅ CLS FIX: Main stylesheet MUST be blocking — non-blocking causes unstyled render → relayout → high CLS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/flashkiss1977/Plus_Parser@main/style.css">
 
-    <!-- Font Awesome: non-blocking (icons fall back gracefully) -->
+    <!-- Font Awesome: non-blocking is safe because icons use unicode fallback (no layout shift) -->
     <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
-    <!-- ✅ FONT DISPLAY FIX: Override font-display for Font Awesome woff2 files.
-         This fixes the "Font display — Est savings of 20ms" warning in PageSpeed.
-         We redeclare the two flagged faces with font-display:swap so text is visible instantly. -->
-    <style>
-      @font-face {
-        font-family: "Font Awesome 6 Free";
-        font-style: normal;
-        font-weight: 900;
-        font-display: swap;
-        src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2") format("woff2");
-      }
-      @font-face {
-        font-family: "Font Awesome 6 Brands";
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2") format("woff2");
-      }
-    </style>
-
     <!-- ✅ CLS FIX: Use font-display=optional to prevent font-swap layout shifts entirely -->
+    <!-- optional = use fallback if font not cached; never causes a reflow -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=Manrope:wght@400;600;700&display=optional" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=Manrope:wght@400;600;700&display=optional" rel="stylesheet"></noscript>
 
