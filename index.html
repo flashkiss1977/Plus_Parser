@@ -31,7 +31,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@plusparser">
     <meta name="twitter:title" content="Cloud-Based Google Dork Scraper, Proxyless Real-Time Tool | PlusParser">
-<meta name=" twitter:description" content=" PlusParser is a quick, proxy-free Google dork scraper that gathers real-time SERP information, domains, and URLs for SEO and OSINT analysis">
+<meta name="twitter:description" content="PlusParser is a quick, proxy-free Google dork scraper that gathers real-time SERP information, domains, and URLs for SEO and OSINT analysis">
     <meta name="twitter:image" content="https://www.plusparser.cloud/icon/preview.png">
 
     <!-- Favicons & PWA Icons -->
@@ -52,26 +52,59 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#0b0f1a">
 
-    <!-- Fonts -->
+    <!-- DNS Prefetch & Preconnect for all 3rd-party origins -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://embed.tawk.to">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/flashkiss1977/Plus_Parser@main/style.css">
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/698107edfd3ee61c36a87b55/1jgg0duk5';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
+    <!-- Fonts: only load weights actually used (400,600,700) + font-display:swap -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=Manrope:wght@400;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Icons: load non-blocking -->
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- Site stylesheet: preload for faster parse -->
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/flashkiss1977/Plus_Parser@main/style.css" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/flashkiss1977/Plus_Parser@main/style.css"></noscript>
+
+    <!-- Tawk.to: defer until page is idle so it never blocks rendering -->
+    <script>
+    window.addEventListener('load', function() {
+        var t = setTimeout(function() {
+            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+            var s1 = document.createElement('script');
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/698107edfd3ee61c36a87b55/1jgg0duk5';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            document.head.appendChild(s1);
+        }, 3000); // 3 s delay — chat loads after LCP
+    });
+    </script>
+    <!-- Structured Data for rich results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PlusParser",
+      "url": "https://www.plusparser.cloud/",
+      "description": "Cloud-based, proxyless Google dork scraper for real-time SERP data, OSINT, and SEO research.",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Web",
+      "offers": [
+        {"@type": "Offer", "name": "Weekly", "price": "15", "priceCurrency": "USD"},
+        {"@type": "Offer", "name": "Monthly Pro", "price": "45", "priceCurrency": "USD"},
+        {"@type": "Offer", "name": "Monthly Elite", "price": "80", "priceCurrency": "USD"}
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Snowflakes Container -->
@@ -633,7 +666,7 @@ s0.parentNode.insertBefore(s1,s0);
             <div class="footer-bottom">
                 <div class="footer-bottom-links">
                     <a href="//www.dmca.com/Protection/Status.aspx?ID=3235beac-60ca-4229-9aef-6b23fdf69d8a" title="DMCA.com Protection Status" class="dmca-badge"> 
-                        <img src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=3235beac-60ca-4229-9aef-6b23fdf69d8a" alt="DMCA.com Protection Status" />
+                        <img src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=3235beac-60ca-4229-9aef-6b23fdf69d8a" alt="DMCA.com Protection Status" loading="lazy" width="120" height="24" />
                     </a>
                     <span>Cryptocurrency Payments Only</span>
                     <span>24/7 Live Chat Support</span>
@@ -643,8 +676,6 @@ s0.parentNode.insertBefore(s1,s0);
             </div>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/gh/flashkiss1977/Plus_Parser@main/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/flashkiss1977/Plus_Parser@main/main.js" defer fetchpriority="low"></script>
 </body>
 </html>
-
-
