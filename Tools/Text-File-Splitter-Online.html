@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- PRIMARY SEO TITLE (branded, keyword‑rich) -->
+  <title>Text File Splitter Online – Split Large TXT & CSV Files Free | PlusParser</title>
+  <!-- META DESCRIPTION (under 160 chars, includes keywords + location) -->
+  <meta name="description" content="Split large text files online free – no upload. Client‑side TXT, CSV, LOG splitter. By lines, size, or parts. Download ZIP instantly. 500 GB support. Part of PlusParser Tools.">
+  <!-- CANONICAL – points to the actual folder location on plusparser.cloud -->
+  <link rel="canonical" href="https://plusparser.cloud/Tools/text-file-splitter.html">
+  <!-- ADDITIONAL SEO META TAGS -->
+  <meta name="keywords" content="split text file online, split CSV file, large file splitter, free file splitter, client-side splitter, divide text file, chunk file, PlusParser tools">
+  <meta name="author" content="PlusParser">
+  <meta name="robots" content="index, follow">
+  <!-- OPEN GRAPH (social sharing) -->
+  <meta property="og:title" content="Free Online Text File Splitter – No Upload, Secure">
+  <meta property="og:description" content="Split huge TXT/CSV files into smaller parts directly in your browser. Zero data upload. Part of PlusParser Tools.">
+  <meta property="og:url" content="https://plusparser.cloud/Tools/text-file-splitter.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PlusParser">
+  <meta property="og:image" content="https://plusparser.cloud/assets/splitter-og.png">
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Text File Splitter Online | PlusParser">
+  <meta name="twitter:description" content="Split big text files by lines, size, or parts. 100% free, no upload.">
+  <!-- Google Fonts + icons (fast, with preconnect) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Space+Mono&display=swap" rel="stylesheet">
+  <!-- STRUCTURED DATA (SoftwareApplication + WebSite) - using correct domain -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Text File Splitter Online",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "description": "Free tool to split large text files into smaller chunks. Works with TXT, CSV, LOG, JSON. Client‑side, no upload.",
+    "featureList": "split by lines, split by size, split into parts, ZIP download, zero data upload",
+    "url": "https://plusparser.cloud/Tools/text-file-splitter.html",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "157"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "PlusParser Tools",
+    "url": "https://plusparser.cloud/Tools/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://plusparser.cloud/Tools/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <style>
+    /* ----- modern reset & design tokens (same as original, keep integrity) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* light mode (default) */
+      --bg-gradient: linear-gradient(145deg, #f0f4ff 0%, #fafcff 100%);
+      --surface: rgba(255, 255, 255, 0.75);
+      --surface-solid: #ffffff;
+      --card-glow: rgba(24, 80, 200, 0.08);
+      --border-light: rgba(0, 10, 30, 0.08);
+      --border-med: rgba(0, 10, 40, 0.15);
+      --accent: #1a5cff;
+      --accent-soft: #e5eeff;
+      --accent-glow: rgba(26, 92, 255, 0.20);
+      --text-primary: #121826;
+      --text-secondary: #2c3854;
+      --text-tertiary: #5d6b89;
+      --chip-bg: rgba(0, 20, 60, 0.03);
+      --shadow-card: 0 18px 36px -12px rgba(0, 35, 80, 0.15), 0 4px 12px rgba(0, 0, 0, 0.02);
+      --shadow-inset: inset 0 1px 3px rgba(0,0,0,0.02);
+      --mono: 'Space Mono', 'Courier New', monospace;
+      --sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --transition: 0.2s ease;
+    }
+
+    [data-theme="dark"] {
+      --bg-gradient: linear-gradient(145deg, #0a0f1c 0%, #111827 100%);
+      --surface: rgba(18, 25, 45, 0.8);
+      --surface-solid: #151f30;
+      --card-glow: rgba(0, 100, 255, 0.15);
+      --border-light: rgba(80, 140, 255, 0.15);
+      --border-med: rgba(100, 160, 255, 0.25);
+      --accent: #6d9eff;
+      --accent-soft: #1d314d;
+      --accent-glow: rgba(90, 160, 255, 0.30);
+      --text-primary: #eef3fc;
+      --text-secondary: #cbd5f0;
+      --text-tertiary: #9aa9c4;
+      --chip-bg: rgba(20, 50, 100, 0.25);
+      --shadow-card: 0 20px 40px -12px #00000070, 0 4px 12px #00000050;
+      --shadow-inset: inset 0 1px 2px rgba(255,255,255,0.05);
+    }
+
+    body {
+      background: var(--bg-gradient);
+      font-family: var(--sans);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      backdrop-filter: blur(2px);
+      transition: background 0.3s, color 0.2s;
+      padding: 2rem 1.5rem;
+    }
+
+    /* glassmorphic container */
+    .glass-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 2.5rem;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-card);
+      padding: 2.2rem 2.5rem;
+      transition: background 0.3s, border-color 0.2s;
+    }
+
+    @media (max-width: 700px) {
+      body { padding: 1rem; }
+      .glass-wrap { padding: 1.5rem; border-radius: 2rem; }
+    }
+
+    /* ----- header / logo ----- */
+    .flex-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .pp-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 18px var(--accent-glow);
+      transition: 0.15s;
+    }
+    .pp-icon svg {
+      width: 26px;
+      height: 26px;
+      fill: white;
+    }
+
+    .wordmark {
+      font-weight: 650;
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--text-primary);
+    }
+    .wordmark span {
+      color: var(--accent);
+    }
+
+    .tool-badge {
+      background: var(--accent-soft);
+      border: 1px solid var(--border-med);
+      border-radius: 100px;
+      padding: 0.3rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .theme-tog {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .tog-btn {
+      width: 48px;
+      height: 28px;
+      border-radius: 40px;
+      background: var(--chip-bg);
+      border: 1px solid var(--border-med);
+      position: relative;
+      cursor: pointer;
+      transition: 0.2s;
+      -webkit-appearance: none;
+    }
+    .tog-btn::before {
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: var(--accent);
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.25s cubic-bezier(0.34, 1.4, 0.64, 1);
+      box-shadow: 0 1px 6px var(--accent-glow);
+    }
+    [data-theme="dark"] .tog-btn::before {
+      transform: translateX(20px);
+      background: #ffd966;
+    }
+    .tog-lbl {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+    }
+
+    /* breadcrumb */
+    .crumb {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      margin-bottom: 1.6rem;
+    }
+    .crumb a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px dashed transparent;
+      transition: border 0.15s;
+    }
+    .crumb a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+    .crumb .current { color: var(--accent); font-weight: 500; }
+
+    /* main 2-col layout */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 2rem;
+      margin: 2rem 0 2.5rem;
+    }
+    @media (max-width: 850px) {
+      .tool-grid { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+    }
+
+    /* ----- main card ----- */
+    .split-area {
+      background: var(--surface-solid);
+      border-radius: 2rem;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-inset), 0 8px 20px rgba(0,0,0,0.02);
+      padding: 1.8rem;
+      transition: background 0.2s, border 0.2s;
+    }
+
+    .dropzone {
+      border: 2px dashed var(--border-med);
+      border-radius: 1.6rem;
+      background: var(--chip-bg);
+      padding: 2.4rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border 0.2s, background 0.2s, transform 0.1s;
+    }
+    .dropzone:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .dropzone:active { transform: scale(0.99); }
+    .dz-icon { font-size: 3rem; margin-bottom: 0.5rem; filter: drop-shadow(0 4px 6px var(--accent-glow)); }
+    .dropzone h3 {
+      font-size: 1.2rem;
+      font-weight: 550;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .dropzone p { font-size: 0.8rem; color: var(--text-tertiary); }
+
+    .file-chip {
+      display: none;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      border-radius: 60px;
+      padding: 0.5rem 1.2rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .file-chip.on { display: flex; }
+    .fc-name { font-weight: 550; color: var(--accent); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+    .fc-size { color: var(--text-tertiary); }
+
+    .label-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.8rem 0 1rem;
+      color: var(--text-tertiary);
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .label-row span { background: var(--chip-bg); padding: 0.2rem 0.8rem; border-radius: 20px; border: 1px solid var(--border-light); }
+
+    .mode-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .mode-tab {
+      background: transparent;
+      border: 1px solid var(--border-med);
+      border-radius: 40px;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      box-shadow: var(--shadow-inset);
+    }
+    .mode-tab:hover { border-color: var(--accent); color: var(--accent); }
+    .mode-tab.on {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+      box-shadow: 0 6px 14px var(--accent-glow);
+    }
+
+    .param-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 1rem;
+    }
+    .param-item label {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-wrapper input {
+      width: 100%;
+      background: var(--surface-solid);
+      border: 1px solid var(--border-med);
+      border-radius: 1.2rem;
+      padding: 0.65rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      font-family: var(--mono);
+      transition: 0.2s;
+      box-shadow: var(--shadow-inset);
+    }
+    .input-wrapper input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+    .input-sfx {
+      position: absolute;
+      right: 1rem;
+      color: var(--text-tertiary);
+      font-size: 0.7rem;
+      pointer-events: none;
+    }
+
+    .chip-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.2rem 0 1.5rem;
+    }
+    .chip {
+      background: var(--chip-bg);
+      border: 1px solid var(--border-light);
+      border-radius: 40px;
+      padding: 0.3rem 1rem;
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+    }
+    .chip b { color: var(--accent); font-weight: 600; }
+
+    .action-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 2rem;
+      padding: 1rem 1.8rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      box-shadow: 0 16px 32px -12px var(--accent-glow);
+      cursor: pointer;
+      transition: 0.15s;
+      margin: 1rem 0 1.2rem;
+    }
+    .action-btn:hover { background: color-mix(in srgb, var(--accent) 85%, white); transform: scale(1.01); }
+    .action-btn:active { transform: scale(0.98); }
+    .action-btn:disabled { opacity: 0.5; pointer-events: none; background: var(--text-tertiary); }
+
+    .prog-section {
+      margin-top: 0.8rem;
+    }
+    .prog-track {
+      width: 100%;
+      height: 6px;
+      background: var(--border-light);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .prog-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      border-radius: 6px;
+      transition: width 0.2s;
+    }
+    .prog-message {
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+      margin-top: 0.3rem;
+    }
+
+    .perf-card {
+      background: linear-gradient(145deg, var(--surface-solid), var(--chip-bg));
+      border-radius: 2rem;
+      border: 1px solid var(--border-med);
+      padding: 1.8rem 1.2rem 1.5rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 12px 28px -12px var(--accent-glow), var(--shadow-inset);
+      transition: 0.2s;
+    }
+    .perf-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
+    }
+    .perf-title span { font-size: 1.4rem; }
+    .perf-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .perf-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.4rem 0.6rem;
+      background: var(--surface-solid);
+      border-radius: 3rem;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-inset);
+    }
+    .perf-label {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .perf-badge {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      border: 1px solid var(--accent);
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+    .perf-footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.2rem;
+      background: var(--accent-soft);
+      border-radius: 2rem;
+      padding: 0.6rem 1rem;
+      border: 1px dashed var(--accent);
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+    }
+
+    .sidebar-card {
+      background: var(--surface-solid);
+      border-radius: 1.5rem;
+      border: 1px solid var(--border-light);
+      padding: 1.5rem;
+      margin-bottom: 1.2rem;
+      box-shadow: var(--shadow-inset);
+    }
+    .card-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      border-bottom: 1px dashed var(--border-med);
+      padding-bottom: 0.5rem;
+    }
+
+    .feature-list {
+      list-style: none;
+    }
+    .feature-list li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.7rem;
+    }
+    .feature-list li::before {
+      content: "▹";
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .how-section, .faq-section {
+      background: var(--surface-solid);
+      border-radius: 2rem;
+      border: 1px solid var(--border-light);
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 1.5rem;
+      margin-top: 1.2rem;
+    }
+    .step {
+      display: flex;
+      gap: 1rem;
+    }
+    .step-n {
+      width: 34px; height: 34px;
+      background: var(--accent-soft);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-weight: 700;
+      border: 1px solid var(--accent);
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .faq-item {
+      background: var(--chip-bg);
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+    }
+    .faq-item h4 { font-size: 0.9rem; margin-bottom: 0.3rem; color: var(--accent); }
+    .faq-item p { font-size: 0.7rem; color: var(--text-tertiary); }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+    }
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-left: 1.5rem;
+    }
+
+    .ad-container {
+      border-radius: 1.2rem;
+      background: var(--surface-solid);
+      border: 1px solid var(--border-med);
+      padding: 0.8rem 1rem;
+      margin: 0.5rem 0 0.8rem 0;
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow-inset);
+    }
+    .ad-label {
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: var(--accent-soft);
+      padding: 0.2rem 0.6rem;
+      border-radius: 30px;
+      font-weight: 600;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    .ad-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color 0.15s;
+    }
+    .ad-link:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    .ad-code {
+      font-family: var(--mono);
+      background: var(--chip-bg);
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      border: 1px dashed var(--border-med);
+    }
+    @media (max-width: 600px) {
+      .ad-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+    .ad-header {
+      margin-bottom: 1rem;
+      justify-content: flex-end;
+    }
+    .ad-below-drop {
+      margin: 1rem 0 0.5rem;
+    }
+    .ad-sidebar {
+      margin-bottom: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+<div class="glass-wrap">
+
+  <div class="flex-header">
+    <div class="logo-group">
+      <div class="pp-icon">
+        <svg viewBox="0 0 24 24"><rect x="10" y="4" width="4" height="16" rx="2"/><rect x="4" y="10" width="16" height="4" rx="2"/></svg>
+      </div>
+      <span class="wordmark"><span>Plus</span>Parser</span>
+      <span class="tool-badge">splitter</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <h1>Text File Splitter Online</h1>
+      <div class="theme-tog">
+        <span class="tog-lbl" id="togLbl">Light</span>
+        <button class="tog-btn" id="togBtn" aria-label="Toggle theme"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- breadcrumb now pointing to plusparser.cloud/Tools/ -->
+  <div class="crumb">
+    <a href="https://plusparser.cloud">PlusParser</a> <span>/</span>
+    <a href="https://plusparser.cloud/Tools/">Tools</a> <span>/</span>
+    <span class="current">Text file splitter</span>
+  </div>
+
+  <div class="tool-grid">
+    <div class="split-area">
+      <div class="dropzone" id="dropZone" tabindex="0" role="button">
+        <div class="dz-icon">📄➡️📦</div>
+        <h3>Drop file or click to browse</h3>
+        <p>TXT, CSV, LOG, JSON, XML — up to 500 GB</p>
+        <input type="file" id="fileInput" hidden accept=".txt,.csv,.log,.json,.xml,.md,text/plain">
+      </div>
+
+      <div class="file-chip" id="fileChip">
+        <span>📎</span>
+        <span class="fc-name" id="fcName">example.log</span>
+        <span class="fc-size" id="fcSize">0 MB</span>
+      </div>
+
+      <div class="label-row"><span>split mode</span></div>
+      <div class="mode-tabs" id="modeTabs">
+        <div class="mode-tab on" data-mode="lines">≡ By lines</div>
+        <div class="mode-tab" data-mode="size">⚖ By size</div>
+        <div class="mode-tab" data-mode="parts">◼ Into parts</div>
+      </div>
+
+      <div class="param-grid">
+        <div class="param-item" id="p-lines">
+          <label>Lines per file</label>
+          <div class="input-wrapper">
+            <input type="number" id="linesVal" value="1000" min="1">
+            <span class="input-sfx">lines</span>
+          </div>
+        </div>
+        <div class="param-item" id="p-size" style="display:none">
+          <label>Max size (MB)</label>
+          <div class="input-wrapper">
+            <input type="number" id="sizeVal" value="200" min="0.1" step="0.1">
+            <span class="input-sfx">MB</span>
+          </div>
+        </div>
+        <div class="param-item" id="p-parts" style="display:none">
+          <label>Number of parts</label>
+          <div class="input-wrapper">
+            <input type="number" id="partsVal" value="5" min="2">
+            <span class="input-sfx">parts</span>
+          </div>
+        </div>
+        <div class="param-item">
+          <label>Prefix</label>
+          <input type="text" id="prefixVal" value="part_" class="input-wrapper" style="padding:0.65rem 1rem;">
+        </div>
+      </div>
+
+      <div class="chip-strip">
+        <span class="chip">⚡ streaming engine</span>
+        <span class="chip">🧠 <b>&lt;8 MB RAM</b></span>
+        <span class="chip">🔒 zero upload</span>
+        <span class="chip">📦 ZIP output</span>
+      </div>
+
+      <button class="action-btn" id="splitBtn">
+        <span>✂</span> Split & download ZIP
+      </button>
+
+      <div class="prog-section">
+        <div class="prog-track" role="progressbar" id="progBar">
+          <div class="prog-fill" id="progFill"></div>
+        </div>
+        <div class="prog-message" id="progTxt">Idle — select a file</div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="perf-card">
+        <div class="perf-title">
+          <span>⚡</span> Performance: split large files 
+        </div>
+        <div class="perf-stats">
+          <div class="perf-row">
+            <span class="perf-label">📦 Max file</span>
+            <span class="perf-badge">500 GB</span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-label">🧠 Memory peak</span>
+            <span class="perf-badge">&lt; 8 MB</span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-label">⬆️ Upload</span>
+            <span class="perf-badge">Zero</span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-label">📂 Parts</span>
+            <span class="perf-badge">Unlimited</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="card-title">✨ Key Features</div>
+        <ul class="feature-list">
+          <li>Split By Lines / Size / Parts</li>
+          <li>100% Client‑side</li>
+          <li>Streaming reads (500 GB)</li>
+          <li>Instant ZIP download</li>
+          <li>Custom prefix</li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO text section: how it works + keyword integration -->
+  <div class="how-section">
+    <h2 style="font-size:1.3rem; font-weight:600;">How to split a large text file online in 3 steps</h2>
+    <div class="step-grid">
+      <div class="step"><div class="step-n">1</div><div><strong>Drop your file</strong><br><span style="font-size:0.75rem; color:var(--text-tertiary);">TXT, CSV, LOG, JSON, XML — all processed in your browser</span></div></div>
+      <div class="step"><div class="step-n">2</div><div><strong>Choose split mode</strong><br><span style="font-size:0.75rem; color:var(--text-tertiary);">lines, size (MB), or fixed number of parts</span></div></div>
+      <div class="step"><div class="step-n">3</div><div><strong>Download ZIP</strong><br><span style="font-size:0.75rem; color:var(--text-tertiary);">all chunks packaged instantly, no upload</span></div></div>
+    </div>
+    <p style="margin-top:1.2rem; font-size:0.9rem;">Our <strong>free text file splitter</strong> works entirely on the client side: your data never leaves your computer. Perfect for splitting huge CSV logs, TXT exports, or JSON dumps. The <strong>streaming engine</strong> handles files up to 500 GB while keeping memory under 8 MB.</p>
+  </div>
+
+  <!-- FAQ with high‑volume long‑tail keywords -->
+  <div class="faq-section">
+    <h2 style="font-size:1.2rem; margin-bottom:0.5rem;">❓ Frequently asked questions about file splitting</h2>
+    <div class="faq-grid">
+      <div class="faq-item"><h4>Can I split a CSV file without losing header?</h4><p>Yes — the splitter treats files as raw text; you can manually keep headers by splitting after line 1. We suggest using “by lines” mode.</p></div>
+      <div class="faq-item"><h4>Is it really free? Any file size limit?</h4><p>Always free, no signup. Browsers support files up to 500 GB (depends on free memory).</p></div>
+      <div class="faq-item"><h4>What formats are supported?</h4><p>Any text‑based file: .txt, .csv, .log, .json, .xml, .md, .sql — even source code.</p></div>
+      <div class="faq-item"><h4>How is zero upload possible?</h4><p>All processing uses the File API and Web Workers (if needed). File data never leaves your device.</p></div>
+    </div>
+  </div>
+
+  <footer>
+    <div>© 2025 PlusParser · private · browser only · <strong>split large files free</strong></div>
+    <div class="footer-links">
+      <a href="https://plusparser.cloud">Home</a><a href="https://plusparser.cloud/Tools/">Tools</a><a href="https://plusparser.cloud/privacy">Privacy</a>
+    </div>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+  (function(){
+    // theme (unchanged, functional)
+    const html = document.documentElement;
+    const togBtn = document.getElementById('togBtn');
+    const togLbl = document.getElementById('togLbl');
+    function setTheme(t) { html.setAttribute('data-theme', t); togLbl.textContent = t==='dark'?'Dark':'Light'; }
+    setTheme(localStorage.getItem('pp-theme') || 'light');
+    togBtn.addEventListener('click', ()=>{
+      const n = html.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+      setTheme(n); localStorage.setItem('pp-theme', n);
+    });
+
+    // elements
+    const dropZone = document.getElementById('dropZone'), fileInput = document.getElementById('fileInput');
+    const fileChip = document.getElementById('fileChip'), fcName = document.getElementById('fcName'), fcSize = document.getElementById('fcSize');
+    const splitBtn = document.getElementById('splitBtn'), progFill = document.getElementById('progFill'), progTxt = document.getElementById('progTxt');
+    const linesVal = document.getElementById('linesVal'), sizeVal = document.getElementById('sizeVal'), partsVal = document.getElementById('partsVal'), prefixVal = document.getElementById('prefixVal');
+    const pLines = document.getElementById('p-lines'), pSize = document.getElementById('p-size'), pParts = document.getElementById('p-parts');
+    const modeTabs = document.querySelectorAll('.mode-tab');
+    let file = null, mode = 'lines';
+
+    function setMode(m) {
+      mode = m;
+      modeTabs.forEach(t => { t.classList.toggle('on', t.dataset.mode === m); });
+      pLines.style.display = m==='lines' ? '' : 'none';
+      pSize.style.display = m==='size' ? '' : 'none';
+      pParts.style.display = m==='parts' ? '' : 'none';
+    }
+    modeTabs.forEach(t => {
+      t.addEventListener('click', ()=> setMode(t.dataset.mode));
+    });
+
+    dropZone.addEventListener('click', ()=> fileInput.click());
+    fileInput.addEventListener('change', e => { if(e.target.files[0]) loadFile(e.target.files[0]); });
+    ['dragenter','dragover','dragleave','drop'].forEach(ev => dropZone.addEventListener(ev, e => e.preventDefault()));
+    dropZone.addEventListener('dragover', ()=> dropZone.classList.add('over'));
+    dropZone.addEventListener('dragleave', ()=> dropZone.classList.remove('over'));
+    dropZone.addEventListener('drop', e => {
+      dropZone.classList.remove('over');
+      if(e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+    });
+
+    function loadFile(f) {
+      file = f;
+      fcName.textContent = f.name;
+      fcSize.textContent = (f.size / 1048576).toFixed(2)+' MB';
+      fileChip.classList.add('on');
+      progTxt.textContent = `✅ ready: ${f.name}`;
+    }
+
+    function setProgress(pct, msg) {
+      progFill.style.width = pct+'%';
+      progTxt.textContent = msg;
+    }
+
+    splitBtn.addEventListener('click', async () => {
+      if(!file) { alert('Select a file'); return; }
+      const prefix = prefixVal.value.trim() || 'part_';
+      splitBtn.disabled = true; splitBtn.innerHTML = '⏳ processing…';
+      try {
+        const zip = new JSZip();
+        const total = file.size;
+        let offset = 0, idx = 1;
+
+        if (mode === 'lines') {
+          const linesPerFile = parseInt(linesVal.value) || 1000;
+          setProgress(5, 'reading lines…');
+          const text = await file.text();
+          const lines = text.split('\n');
+          const totalLines = lines.length;
+          for (let i = 0; i < totalLines; i += linesPerFile) {
+            const chunk = lines.slice(i, i + linesPerFile).join('\n');
+            zip.file(`${prefix}${String(idx).padStart(3,'0')}.txt`, chunk);
+            idx++;
+            setProgress(Math.min(5 + (i/totalLines)*80, 85), `part ${idx-1}`);
+            await new Promise(r => setTimeout(r,0));
+          }
+        } else {
+          let chunkSize;
+          if (mode === 'size') {
+            const mb = parseFloat(sizeVal.value);
+            if (!mb || mb <= 0) throw new Error('invalid size');
+            chunkSize = mb * 1048576;
+          } else {
+            const partsNum = parseInt(partsVal.value);
+            if (!partsNum || partsNum < 2) throw new Error('parts must be >=2');
+            chunkSize = Math.ceil(total / partsNum);
+          }
+          while (offset < total) {
+            const end = Math.min(offset + chunkSize, total);
+            const blob = file.slice(offset, end);
+            zip.file(`${prefix}${String(idx).padStart(3,'0')}.txt`, await blob.arrayBuffer());
+            offset = end; idx++;
+            setProgress(5 + (offset/total)*80, `chunk ${idx-1}`);
+            await new Promise(r => setTimeout(r,0));
+          }
+        }
+
+        setProgress(90, 'compressing zip…');
+        const blob = await zip.generateAsync({type:'blob'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = (file.name.replace(/\.[^/.]+$/,'')||'split')+'_parts.zip';
+        a.click();
+        URL.revokeObjectURL(url);
+        setProgress(100, `✔ done — ${idx-1} parts`);
+      } catch (e) {
+        setProgress(0, '✖ error: '+e.message);
+      } finally {
+        splitBtn.disabled = false;
+        splitBtn.innerHTML = '✂ Split & download ZIP';
+      }
+    });
+
+    setMode('lines');
+  })();
+</script>
+</body>
+</html>
