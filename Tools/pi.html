@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AetherDrop · Encrypted P2P File Stream</title>
+  <meta name="description" content="Instant encrypted peer-to-peer file transfer. Zero server storage. Drop a file → get a secure link → direct transfer.">
+  <meta name="theme-color" content="#0a0c15">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.4.7/dist/peerjs.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-void: #07090f;
+      --bg-elevated: #0c0f1a;
+      --glass-layer: rgba(12, 16, 26, 0.68);
+      --glass-edge: rgba(255, 255, 255, 0.05);
+      --glass-edge-glow: rgba(0, 255, 200, 0.2);
+      --aura-green: #00f7c2;
+      --aura-cyan: #3b82f6;
+      --aura-purple: #a855f7;
+      --text-luminous: #f1f5ff;
+      --text-soft: #9aa4bf;
+      --text-dim: #5b6688;
+      --success-glow: #10b981;
+      --danger-glow: #f43f5e;
+      --radius-2xl: 2rem;
+      --radius-xl: 1.5rem;
+      --radius-lg: 1rem;
+      --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
+      --ease-fluid: cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    body {
+      background: radial-gradient(ellipse 80% 60% at 30% 20%, #0e121f, #05070c);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-luminous);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* animated background orbs */
+    .nebula {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .nebula-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(110px);
+      opacity: 0.45;
+      animation: floatDrift 28s infinite alternate cubic-bezier(0.3, 0.7, 0.5, 1);
+    }
+    .blob1 { width: 550px; height: 550px; background: #00f7c220; top: -200px; left: -150px; }
+    .blob2 { width: 600px; height: 600px; background: #3b82f620; bottom: -250px; right: -120px; animation-duration: 34s; }
+    .blob3 { width: 400px; height: 400px; background: #a855f720; top: 45%; left: 70%; animation-duration: 24s; }
+    @keyframes floatDrift {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(35px, -45px) scale(1.08); }
+    }
+
+    .grid-mesh {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(0, 255, 200, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 200, 0.02) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, black, transparent 85%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 3;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 24px 80px;
+    }
+
+    /* animations */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      animation: fadeSlideUp 0.65s var(--ease-fluid) both;
+    }
+    .delay-1 { animation-delay: 0.02s; }
+    .delay-2 { animation-delay: 0.09s; }
+    .delay-3 { animation-delay: 0.16s; }
+    .delay-4 { animation-delay: 0.26s; }
+
+    /* header */
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #00f7c2, #2dd4bf);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 24px -12px rgba(0, 247, 194, 0.4);
+      transition: transform 0.25s var(--ease-spring);
+    }
+    .brand-icon svg { width: 28px; height: 28px; stroke: #060a12; stroke-width: 2; }
+    .brand h1 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(120deg, #ffffff, #b0f3e0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .brand span { font-size: 0.7rem; font-weight: 500; color: var(--text-dim); letter-spacing: 0.3px; }
+
+    .pill-status {
+      background: rgba(10, 14, 26, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-edge);
+      border-radius: 100px;
+      padding: 8px 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4f5b7a;
+      transition: all 0.2s;
+    }
+    .status-dot.active { background: #00f7c2; box-shadow: 0 0 12px #00f7c2; animation: pulseGlow 1.5s infinite; }
+    .status-dot.connecting { background: #fbbf24; box-shadow: 0 0 8px #fbbf24; animation: pulseGlow 1.2s infinite; }
+    @keyframes pulseGlow { 0% { opacity: 0.5; transform: scale(0.85); } 100% { opacity: 1; transform: scale(1.2); } }
+
+    /* hero */
+    .hero-glow {
+      margin-bottom: 28px;
+    }
+    .chip-ghost {
+      display: inline-flex;
+      background: rgba(0, 247, 194, 0.08);
+      border: 1px solid rgba(0, 247, 194, 0.3);
+      border-radius: 40px;
+      padding: 6px 18px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #00f7c2;
+      margin-bottom: 18px;
+    }
+    .main-title {
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #ffffff, #bdd3ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 14px;
+    }
+    .sub-lead {
+      color: var(--text-soft);
+      max-width: 520px;
+      font-size: 1rem;
+      margin-bottom: 22px;
+    }
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 6px 0 12px;
+    }
+    .badge-light {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      background: rgba(255,255,255,0.02);
+      padding: 6px 14px;
+      border-radius: 60px;
+      color: var(--text-soft);
+    }
+
+    /* glass card */
+    .glass-panel {
+      background: var(--glass-layer);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-edge);
+      border-radius: var(--radius-2xl);
+      transition: all 0.3s ease;
+      margin: 24px 0 28px;
+    }
+    .glass-panel:hover { border-color: rgba(0, 247, 194, 0.25); background: rgba(14, 19, 32, 0.75); }
+
+    .panel-inner { padding: 28px 32px; }
+
+    /* auto link row */
+    .link-autorow {
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 6px 6px 6px 24px;
+      margin: 16px 0 8px;
+      border: 1px solid rgba(0,247,194,0.2);
+    }
+    .link-autorow input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 0.8rem;
+      color: #cbd5ff;
+      outline: none;
+      padding: 12px 0;
+    }
+    .btn-copy {
+      background: rgba(0,247,194,0.12);
+      border: 1px solid rgba(0,247,194,0.4);
+      border-radius: 60px;
+      padding: 8px 22px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #00f7c2;
+    }
+    .btn-copy:hover { background: #00f7c220; transform: scale(0.98); }
+
+    /* drop zone next level */
+    .drop-zone {
+      border: 2px dashed rgba(0, 247, 194, 0.3);
+      border-radius: 36px;
+      background: rgba(8, 12, 22, 0.6);
+      transition: all 0.35s var(--ease-spring);
+      cursor: pointer;
+      text-align: center;
+      padding: 56px 24px;
+      margin: 12px 0 20px;
+    }
+    .drop-zone:hover { border-color: #00f7c2; background: rgba(0, 247, 194, 0.02); transform: scale(1.01); }
+    .drop-zone.drag-over { border-style: solid; border-color: #00f7c2; background: radial-gradient(ellipse at center, rgba(0,247,194,0.08), transparent); transform: scale(1.02); }
+    .drop-icon-big {
+      width: 84px;
+      height: 84px;
+      background: linear-gradient(145deg, rgba(0,247,194,0.12), rgba(0,247,194,0.02));
+      border-radius: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .drop-icon-big svg { width: 38px; height: 38px; stroke: #00f7c2; stroke-width: 1.7; }
+
+    /* file queue */
+    .transfer-queue {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .file-card {
+      background: rgba(10, 14, 24, 0.8);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 24px;
+      padding: 18px 22px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+      transition: 0.2s;
+    }
+    .file-icon {
+      width: 54px;
+      height: 54px;
+      background: rgba(0, 247, 194, 0.1);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.7rem;
+      font-family: monospace;
+      text-transform: uppercase;
+      color: #a0f0da;
+    }
+    .file-info {
+      flex: 2;
+      min-width: 160px;
+    }
+    .file-name {
+      font-weight: 600;
+      margin-bottom: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .progress-track {
+      flex: 1;
+      height: 5px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #00f7c2, #2dd4bf);
+      border-radius: 20px;
+      transition: width 0.2s linear;
+    }
+    .file-meta {
+      display: flex;
+      gap: 14px;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      font-family: monospace;
+    }
+    .action-save {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 40px;
+      padding: 6px 18px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-save:hover { background: #10b98130; }
+
+    /* end session button */
+    .end-session-btn {
+      background: rgba(244, 63, 94, 0.12);
+      border: 1px solid rgba(244, 63, 94, 0.4);
+      border-radius: 40px;
+      padding: 8px 20px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #f87193;
+    }
+    .flex-between { display: flex; justify-content: space-between; align-items: center; }
+
+    /* modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 7, 15, 0.88);
+      backdrop-filter: blur(24px);
+      z-index: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.25s ease;
+    }
+    .modal-card {
+      background: #0e1322;
+      border: 1px solid rgba(0, 247, 194, 0.4);
+      border-radius: 40px;
+      padding: 32px;
+      max-width: 420px;
+      width: 100%;
+      animation: zoomFade 0.3s var(--ease-spring);
+    }
+    @keyframes zoomFade {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .hidden { display: none; }
+    button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; background: none; }
+    .toast-stack {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 500;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .toast {
+      background: #0f1422e6;
+      backdrop-filter: blur(12px);
+      border-left: 4px solid #00f7c2;
+      border-radius: 20px;
+      padding: 12px 24px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      animation: slideRight 0.3s var(--ease-fluid);
+    }
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+<div class="nebula"><div class="nebula-blob blob1"></div><div class="nebula-blob blob2"></div><div class="nebula-blob blob3"></div></div>
+<div class="grid-mesh"></div>
+<div class="toast-stack" id="toastRoot"></div>
+
+<div id="joinModal" class="modal-overlay hidden">
+  <div class="modal-card">
+    <div style="display:flex; gap:14px; align-items:center; margin-bottom: 18px;">
+      <div class="brand-icon" style="width:48px;height:48px;"><svg viewBox="0 0 24 24" fill="none" stroke="#060a12"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <h3 style="font-weight:700; font-size:1.4rem;">Encrypted handshake</h3>
+    </div>
+    <p style="color:var(--text-soft); margin-bottom: 28px;">You're about to receive files directly from the host. Zero data passes through any server — pure WebRTC encryption.</p>
+    <div style="display:flex; gap:14px; justify-content:flex-end;"><button id="cancelModalBtn" class="btn-copy" style="background:transparent;">Cancel</button><button id="acceptModalBtn" class="btn-copy" style="background:#00f7c210; border-color:#00f7c2;">Join & receive →</button></div>
+  </div>
+</div>
+
+<main class="app-container">
+  <div class="header-row animate-in">
+    <div class="brand"><div class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2"/><circle cx="19" cy="7" r="2"/><path d="M12 20h8M4 20h2"/></svg></div><div><h1>AetherDrop</h1><span>P2P encrypted · no cloud</span></div></div>
+    <div class="pill-status"><div class="status-dot" id="globalStatusDot"></div><span id="globalStatusText">Ready</span></div>
+  </div>
+
+  <div class="hero-glow animate-in delay-1">
+    <div class="chip-ghost">⚡ INSTANT PEER LINK</div>
+    <h1 class="main-title">Drop a file,<br>get a secure link instantly.</h1>
+    <p class="sub-lead">No "Create Session" — just drag & drop. A magic link appears, share it, and files stream directly.</p>
+    <div class="trust-badges"><div class="badge-light">🔒 E2E encrypted</div><div class="badge-light">📦 Unlimited size</div><div class="badge-light">🌊 Chunked stream</div></div>
+  </div>
+
+  <!-- Glass panel with automatic link generation -->
+  <div class="glass-panel animate-in delay-2">
+    <div class="panel-inner">
+      <div class="flex-between" style="margin-bottom: 12px;"><h3 style="font-weight:600;">🔗 Active session link</h3><button id="forceResetLinkBtn" class="end-session-btn" style="display:none;">✖ End session</button></div>
+      <div id="autoLinkContainer" class="link-autorow">
+        <input type="text" id="sessionLinkInput" readonly placeholder="Select a file to generate secure link...">
+        <button id="copyLinkAction" class="btn-copy" disabled>Copy link</button>
+      </div>
+      <div style="font-size:0.7rem; color:#5f7b9a; margin-top: 8px;">✨ Link auto-creates when you add a file — share it with anyone</div>
+    </div>
+  </div>
+
+  <!-- Dropzone & file upload -->
+  <div class="drop-zone animate-in delay-3" id="dragZone">
+    <div class="drop-icon-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v12m0 0-3-3m3 3 3-3M5 21h14"/><rect x="4" y="15" width="16" height="4" rx="1"/></svg></div>
+    <div style="font-weight:700; font-size:1.3rem;">Drag & drop files here</div>
+    <div style="font-size:0.85rem; color:var(--text-soft); margin-top: 8px;">or click to browse · Any size, any type</div>
+    <input type="file" id="globalFileInput" multiple style="display:none;">
+  </div>
+
+  <div id="fileQueue" class="transfer-queue animate-in delay-4"></div>
+</main>
+
+<script>
+  // --------------------- STATE -------------------------
+  let peer = null;
+  let activeConn = null;
+  let sessionPeerId = null;       // my generated peerId (session)
+  let isHost = false;
+  let awaitingFiles = new Map();   // store incoming file buffers
+  const CHUNK_SIZE = 256 * 1024;
+
+  // DOM elements
+  const dropZone = document.getElementById('dragZone');
+  const fileInput = document.getElementById('globalFileInput');
+  const fileQueueDiv = document.getElementById('fileQueue');
+  const sessionLinkInput = document.getElementById('sessionLinkInput');
+  const copyLinkBtn = document.getElementById('copyLinkAction');
+  const forceResetBtn = document.getElementById('forceResetLinkBtn');
+  const statusDot = document.getElementById('globalStatusDot');
+  const statusText = document.getElementById('globalStatusText');
+  const toastContainer = document.getElementById('toastRoot');
+  const joinModal = document.getElementById('joinModal');
+  const acceptModal = document.getElementById('acceptModalBtn');
+  const cancelModal = document.getElementById('cancelModalBtn');
+
+  // helpers
+  function showToast(msg, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.style.borderLeftColor = type === 'success' ? '#00f7c2' : (type === 'error' ? '#f43f5e' : '#3b82f6');
+    toast.innerText = msg;
+    toastContainer.appendChild(toast);
+    setTimeout(() => toast.remove(), 3500);
+  }
+
+  function updateStatus(status, label) {
+    statusDot.className = 'status-dot';
+    if (status === 'active') statusDot.classList.add('active');
+    else if (status === 'connecting') statusDot.classList.add('connecting');
+    statusText.innerText = label;
+  }
+
+  function resetFullSession(resetUrl = true) {
+    if (activeConn) { try { activeConn.close(); } catch(e) {} }
+    if (peer) { peer.destroy(); }
+    peer = null; activeConn = null; sessionPeerId = null; isHost = false;
+    if (resetUrl) {
+      sessionLinkInput.value = '';
+      copyLinkBtn.disabled = true;
+      forceResetBtn.style.display = 'none';
+      const url = new URL(window.location);
+      url.searchParams.delete('session');
+      window.history.replaceState({}, '', url);
+    }
+    updateStatus('', 'Ready');
+  }
+
+  function generateNewSessionAsHost() {
+    resetFullSession(true);
+    const newPeerId = crypto.randomUUID();
+    sessionPeerId = newPeerId;
+    isHost = true;
+    peer = new Peer(newPeerId, {
+      config: { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }, { urls: 'stun:stun1.l.google.com:19302' }] }
+    });
+    peer.on('open', () => {
+      const linkUrl = `${window.location.origin}${window.location.pathname}?session=${newPeerId}`;
+      sessionLinkInput.value = linkUrl;
+      copyLinkBtn.disabled = false;
+      forceResetBtn.style.display = 'inline-flex';
+      updateStatus('connecting', 'Waiting for peer...');
+      showToast('✨ Secure session active · Share the link', 'success');
+    });
+    peer.on('connection', (conn) => {
+      activeConn = conn;
+      setupConnectionEvents(conn, true);
+    });
+    peer.on('error', (err) => { showToast(`Peer error: ${err.type}`, 'error'); resetFullSession(true); });
+  }
+
+  function setupConnectionEvents(conn, hostMode) {
+    conn.on('open', () => {
+      updateStatus('active', hostMode ? 'Connected · peer online' : 'Connected · receiving');
+      showToast(hostMode ? '🔗 Peer joined! You can send files' : 'Connected to host', 'success');
+      if (!hostMode) {
+        // send auth handshake
+        conn.send({ type: 'auth' });
+      }
+    });
+    conn.on('data', async (data) => {
+      if (data.type === 'auth') { conn.send({ type: 'auth-ok' }); return; }
+      if (data.type === 'auth-ok') { updateStatus('active', 'Secure channel ready'); return; }
+      if (data.type === 'file-meta') {
+        awaitingFiles.set(data.id, { chunks: [], received: 0, total: data.size, name: data.name, lastTime: Date.now(), lastOffset: 0 });
+        createFileEntryUI(data.id, data.name, data.size, 'receive');
+        return;
+      }
+      if (data.type === 'file-chunk') {
+        const buf = awaitingFiles.get(data.id);
+        if (buf) {
+          buf.chunks.push(data.chunk);
+          buf.received += data.chunk.byteLength;
+          const percent = Math.floor((buf.received / buf.total) * 100);
+          updateProgressUI(data.id, percent, buf.received, buf.total, buf.lastTime, buf.lastOffset);
+          buf.lastOffset = buf.received; buf.lastTime = Date.now();
+        }
+        return;
+      }
+      if (data.type === 'file-end') {
+        const buf = awaitingFiles.get(data.id);
+        if (buf) {
+          const blob = new Blob(buf.chunks);
+          const url = URL.createObjectURL(blob);
+          finalizeReceiveUI(data.id, url, buf.name);
+          awaitingFiles.delete(data.id);
+          showToast(`✓ Received ${buf.name}`, 'success');
+        }
+        return;
+      }
+    });
+    conn.on('close', () => { showToast('Connection closed by peer', 'info'); resetFullSession(true); });
+    conn.on('error', () => { showToast('Connection error', 'error'); });
+  }
+
+  function joinSessionAsClient(hostId) {
+    resetFullSession(false);
+    const clientId = crypto.randomUUID();
+    peer = new Peer(clientId, { config: { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] } });
+    peer.on('open', () => {
+      activeConn = peer.connect(hostId, { reliable: true, serialization: 'binary' });
+      setupConnectionEvents(activeConn, false);
+      updateStatus('connecting', 'Connecting to host...');
+    });
+    peer.on('error', () => { showToast('Failed to establish session', 'error'); resetFullSession(true); });
+  }
+
+  // UI for files
+  function createFileEntryUI(id, name, size, direction) {
+    const ext = name.split('.').pop().slice(0,4).toUpperCase() || 'FILE';
+    const div = document.createElement('div');
+    div.className = 'file-card';
+    div.id = `transfer-${id}`;
+    div.innerHTML = `
+      <div class="file-icon" style="background:#00f7c210;">${ext}</div>
+      <div class="file-info">
+        <div class="file-name" title="${name}">${name}</div>
+        <div class="progress-row"><div class="progress-track"><div class="progress-fill" id="fill-${id}"></div></div><span id="perc-${id}" style="font-size:0.7rem;">0%</span></div>
+        <div class="file-meta"><span>${formatBytes(size)}</span><span id="speed-${id}">—</span><span>${direction === 'send' ? '⬆ sending' : '⬇ receiving'}</span></div>
+      </div>
+      <div id="action-${id}"></div>
+    `;
+    fileQueueDiv.appendChild(div);
+  }
+
+  function formatBytes(b) { if(b<1024) return b+' B'; if(b<1e6) return (b/1024).toFixed(1)+' KB'; return (b/1e6).toFixed(1)+' MB'; }
+  function updateProgressUI(id, percent, received, total, lastTime, lastOffset) {
+    const fill = document.getElementById(`fill-${id}`);
+    const percSpan = document.getElementById(`perc-${id}`);
+    const speedSpan = document.getElementById(`speed-${id}`);
+    if (fill) fill.style.width = `${Math.min(100, percent)}%`;
+    if (percSpan) percSpan.innerText = `${percent}%`;
+    if (speedSpan && lastTime && lastOffset) {
+      const dt = (Date.now() - lastTime) / 1000;
+      const diff = received - lastOffset;
+      let rate = dt > 0 ? diff / dt / 1024 : 0;
+      speedSpan.innerText = rate > 1024 ? (rate/1024).toFixed(1)+' MB/s' : Math.round(rate)+' KB/s';
+    }
+  }
+  function finalizeReceiveUI(id, blobUrl, fileName) {
+    const actionDiv = document.getElementById(`action-${id}`);
+    if (actionDiv) {
+      const saveBtn = document.createElement('button');
+      saveBtn.className = 'action-save';
+      saveBtn.innerHTML = '💾 Save file';
+      saveBtn.onclick = () => {
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = fileName;
+        a.click();
+      };
+      actionDiv.appendChild(saveBtn);
+    }
+    const speedSpan = document.getElementById(`speed-${id}`);
+    if (speedSpan) speedSpan.innerText = 'Complete';
+  }
+
+  // send files with chunking
+  async function sendFilesToPeer(fileList) {
+    if (!activeConn || !activeConn.open) { showToast('No active peer connection', 'error'); return; }
+    for (const file of fileList) {
+      const id = crypto.randomUUID();
+      createFileEntryUI(id, file.name, file.size, 'send');
+      activeConn.send({ type: 'file-meta', id, name: file.name, size: file.size });
+      let offset = 0;
+      let lastTime = Date.now(), lastOffset = 0;
+      const sendNext = async () => {
+        if (!activeConn || !activeConn.open) return;
+        const slice = file.slice(offset, offset + CHUNK_SIZE);
+        const buffer = await slice.arrayBuffer();
+        activeConn.send({ type: 'file-chunk', id, chunk: buffer });
+        offset += buffer.byteLength;
+        const percent = Math.floor((offset / file.size) * 100);
+        updateProgressUI(id, percent, offset, file.size, lastTime, lastOffset);
+        lastOffset = offset; lastTime = Date.now();
+        if (offset < file.size) {
+          const buffered = activeConn.dataChannel ? activeConn.dataChannel.bufferedAmount : 0;
+          setTimeout(sendNext, buffered > 4*1024*1024 ? 40 : 0);
+        } else {
+          activeConn.send({ type: 'file-end', id, name: file.name });
+          const localUrl = URL.createObjectURL(file);
+          finalizeReceiveUI(id, localUrl, file.name);
+          showToast(`✓ ${file.name} sent`, 'success');
+        }
+      };
+      sendNext();
+    }
+  }
+
+  // file drop & browse
+  function handleFiles(files) {
+    if (!files.length) return;
+    if (!peer || !activeConn || !activeConn.open) {
+      if (!sessionPeerId || !isHost) {
+        generateNewSessionAsHost();
+        setTimeout(() => {
+          if (activeConn && activeConn.open) sendFilesToPeer(files);
+          else showToast('Waiting for peer to connect... file will send once peer joins', 'info');
+        }, 400);
+      } else if (isHost && activeConn && activeConn.open) sendFilesToPeer(files);
+      else if (isHost && (!activeConn || !activeConn.open)) showToast('Peer not connected yet. Share link first.', 'info');
+      else showToast('No active session', 'error');
+    } else {
+      sendFilesToPeer(files);
+    }
+  }
+
+  dropZone.addEventListener('click', () => fileInput.click());
+  dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+  dropZone.addEventListener('drop', (e) => { e.preventDefault(); dropZone.classList.remove('drag-over'); if (e.dataTransfer.files.length) handleFiles(Array.from(e.dataTransfer.files)); });
+  fileInput.addEventListener('change', () => { if (fileInput.files.length) handleFiles(Array.from(fileInput.files)); fileInput.value = ''; });
+
+  copyLinkBtn.addEventListener('click', async () => { if (sessionLinkInput.value) { await navigator.clipboard.writeText(sessionLinkInput.value); showToast('Link copied', 'success'); } });
+  forceResetBtn.addEventListener('click', () => { resetFullSession(true); fileQueueDiv.innerHTML = ''; showToast('Session ended', 'info'); });
+
+  // auto join logic when URL contains session
+  (function autoJoin() {
+    const urlParams = new URLSearchParams(location.search);
+    const hostParam = urlParams.get('session');
+    if (hostParam && hostParam.length > 10) {
+      joinModal.classList.remove('hidden');
+      acceptModal.onclick = () => {
+        joinModal.classList.add('hidden');
+        joinSessionAsClient(hostParam);
+      };
+      cancelModal.onclick = () => {
+        joinModal.classList.add('hidden');
+        const cleanUrl = window.location.pathname;
+        window.history.replaceState({}, '', cleanUrl);
+        resetFullSession(true);
+      };
+    }
+  })();
+</script>
+</body>
+</html>
