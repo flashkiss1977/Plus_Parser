@@ -531,6 +531,20 @@
       }
     }
   </style>
+  <!-- Tawk.to: defer until page is idle so it never blocks rendering -->
+    <script>
+    window.addEventListener('load', function() {
+        var t = setTimeout(function() {
+            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+            var s1 = document.createElement('script');
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/698107edfd3ee61c36a87b55/1jgg0duk5';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            document.head.appendChild(s1);
+        }, 3000); // 3 s delay — chat loads after LCP
+    });
+    </script>
 </head>
 <body>
 <div class="bg-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
