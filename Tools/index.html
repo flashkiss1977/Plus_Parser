@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PlusParser Tools | Free Online Utilities</title>
+<meta name="description" content="Free online tools by PlusParser. Split text files, share files via P2P instantly with no storage. Fast, secure, and browser-based tools.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#0a0f1f,#02050c);
+  color:#fff;
+  min-height:100vh;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+/* ===== HEADER ===== */
+.header{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.header h1{
+  font-size:2.8rem;
+  font-weight:800;
+  background:linear-gradient(120deg,#fff,#9fe8ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.header p{
+  color:#8f9bb5;
+  margin-top:10px;
+}
+
+/* ===== GRID ===== */
+.tools-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:rgba(255,255,255,0.04);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:20px;
+  padding:25px;
+  transition:0.3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(0,212,255,0.4);
+  box-shadow:0 20px 50px rgba(0,212,255,0.15);
+}
+
+/* glow effect */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top,rgba(0,212,255,0.15),transparent 70%);
+  opacity:0;
+  transition:0.3s;
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+/* ===== ICON ===== */
+.icon{
+  width:55px;
+  height:55px;
+  border-radius:14px;
+  background:rgba(0,212,255,0.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:15px;
+  font-size:22px;
+}
+
+/* ===== TEXT ===== */
+.card h2{
+  font-size:1.3rem;
+  margin-bottom:10px;
+}
+
+.card p{
+  font-size:0.9rem;
+  color:#9aa6c4;
+  margin-bottom:20px;
+}
+
+/* ===== BUTTON ===== */
+.card a{
+  display:inline-block;
+  text-decoration:none;
+  padding:10px 20px;
+  border-radius:30px;
+  background:#00d4ff;
+  color:#001018;
+  font-weight:600;
+  transition:0.25s;
+}
+
+.card a:hover{
+  background:#00b8e6;
+}
+
+/* ===== BADGE ===== */
+.badge{
+  position:absolute;
+  top:15px;
+  right:15px;
+  font-size:0.7rem;
+  padding:5px 10px;
+  border-radius:20px;
+  background:rgba(0,212,255,0.15);
+  color:#00d4ff;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  text-align:center;
+  margin-top:60px;
+  color:#6b7280;
+  font-size:0.8rem;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:500px){
+  .header h1{
+    font-size:2rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>PlusParser Tools</h1>
+    <p>Fast, secure & free browser-based utilities</p>
+  </div>
+
+  <!-- TOOLS GRID -->
+  <div class="tools-grid">
+
+    <!-- TOOL 1 -->
+    <div class="card">
+      <div class="badge">Popular</div>
+      <div class="icon">📄</div>
+      <h2>Text File Splitter</h2>
+      <p>Split large text files into smaller parts instantly. Works fully in your browser with no upload required.</p>
+      <a href="https://www.plusparser.cloud/Tools/Text-File-Splitter-Online.html">Open Tool</a>
+    </div>
+
+    <!-- TOOL 2 -->
+    <div class="card">
+      <div class="badge">New</div>
+      <div class="icon">⚡</div>
+      <h2>IceLinker (P2P Share)</h2>
+      <p>Send files directly browser-to-browser using WebRTC. No storage, no limits, fully private.</p>
+      <a href="https://www.plusparser.cloud/Tools/icelinker.html">Open Tool</a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2026 PlusParser · Free Online Tools Platform
+  </div>
+
+</div>
+
+</body>
+</html>
