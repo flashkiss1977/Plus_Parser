@@ -518,6 +518,110 @@
       color: var(--text-tertiary);
     }
 
+    /* ── How to Use Section ── */
+    .how-to-use {
+      margin: 0 0 28px;
+    }
+
+    .how-to-use-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .how-to-use-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(0,212,255,0.2), transparent);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .step-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 20px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.2s;
+    }
+
+    .step-card:hover {
+      border-color: rgba(0, 212, 255, 0.15);
+    }
+
+    .step-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .step-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .step-desc {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding-left: 40px;
+    }
+
+    .step-warning {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: rgba(251, 191, 36, 0.06);
+      border: 1px solid rgba(251, 191, 36, 0.2);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-top: 4px;
+    }
+
+    .step-warning svg {
+      flex-shrink: 0;
+      width: 15px;
+      height: 15px;
+      stroke: #fbbf24;
+      margin-top: 1px;
+    }
+
+    .step-warning span {
+      font-size: 0.72rem;
+      color: #e4b84a;
+      line-height: 1.6;
+    }
+
     @media (max-width: 580px) {
       .brand-icon {
         width: 46px;
@@ -528,6 +632,9 @@
       }
       .brand h1 {
         font-size: 1.6rem;
+      }
+      .steps-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -581,7 +688,50 @@
     </div>
   </div>
 
-  <div class="glass-panel animate-in delay-2">
+  <!-- ── How to Use ── -->
+  <div class="how-to-use animate-in delay-2">
+    <div class="how-to-use-title">How to Use</div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-top">
+          <div class="step-num">1</div>
+          <div class="step-label">Upload your file</div>
+        </div>
+        <div class="step-desc">Drag &amp; drop any file onto the upload zone, or click it to browse. A unique session link will be generated automatically.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-top">
+          <div class="step-num">2</div>
+          <div class="step-label">Copy &amp; share the link</div>
+        </div>
+        <div class="step-desc">Click <strong style="color:var(--text-primary)">Copy link</strong> and send it to your recipient via any messaging app, email, or chat.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-top">
+          <div class="step-num">3</div>
+          <div class="step-label">Recipient opens the link</div>
+        </div>
+        <div class="step-desc">The recipient opens the link in their browser. The transfer begins instantly — the file streams directly from your device to theirs.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-top">
+          <div class="step-num">4</div>
+          <div class="step-label">Wait for download to finish</div>
+        </div>
+        <div class="step-desc">Keep this page open until the recipient's download is fully complete. Once it's done, you're free to close the tab.</div>
+      </div>
+    </div>
+    <div class="step-warning">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/>
+        <line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      <span><strong style="color:#fbbf24">Do not close this page</strong> before the download is complete. IceLinker uses a direct peer-to-peer connection — there is no server storing your file. If you close the tab, the transfer will be interrupted and the link will stop working.</span>
+    </div>
+  </div>
+
+  <div class="glass-panel animate-in delay-3">
     <div class="panel-content">
       <div class="section-header">
         <h3 style="font-weight:600;">Session link</h3>
@@ -597,7 +747,7 @@
     </div>
   </div>
 
-  <div class="drop-zone animate-in delay-3" id="dropZone">
+  <div class="drop-zone animate-in delay-4" id="dropZone">
     <div class="drop-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path d="M12 3v12m0 0-3-3m3 3 3-3M5 21h14"/>
